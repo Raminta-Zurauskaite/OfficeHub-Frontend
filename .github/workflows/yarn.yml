@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js 11
+      - name: Use Node.js 12
         uses: actions/setup-node@master
         with:
-          node-version: 11
+          node-version: 12
       - name: Build, lint and test
         run: |
           yarn
