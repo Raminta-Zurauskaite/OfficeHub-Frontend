@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="users-container">
+        <h4>Choose an account</h4>
+        <ul *ngFor="let user of users">
+            <div class="user">
+                <li>{{user.name}} {{user.surname}}</li>
+                <li>{{user.email}}</li>
+            </div>
+        </ul>
+        <ul>
+            <li>Add account</li>
+        </ul>
+    </div>
+</div>
