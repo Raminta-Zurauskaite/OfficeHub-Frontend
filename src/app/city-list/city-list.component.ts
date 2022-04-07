@@ -10,10 +10,10 @@ import { DataService } from '../service/data.service';
 export class CityListComponent implements OnInit {
   cities: CityInterface[] = [];
 
-  constructor(private _cityService: DataService) { }
+  constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
-    this._cityService.loadCities().subscribe(
+    this._dataService.loadCities().subscribe(
       (data: CityInterface[]) => { this.cities = data }
     );
   }

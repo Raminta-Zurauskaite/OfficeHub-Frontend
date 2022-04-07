@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CityListComponent } from './city-list/city-list.component';
 import { LoginComponent } from './login/login.component';
 import { BuildingListComponent } from './building-list/building-list.component';
+import { FloorListComponent } from './floor-list/floor-list.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { BuildingListComponent } from './building-list/building-list.component';
     AppComponent,
     LoginComponent,
     CityListComponent,
-    BuildingListComponent
+    BuildingListComponent,
+    FloorListComponent
   ],
   imports: [
     BrowserModule,
