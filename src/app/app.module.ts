@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CityListComponent } from './city-list/city-list.component';
 import { LoginComponent } from './login/login.component';
+import { BuildingListComponent } from './building-list/building-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CityListComponent
+    CityListComponent,
+    BuildingListComponent
   ],
   imports: [
     BrowserModule,

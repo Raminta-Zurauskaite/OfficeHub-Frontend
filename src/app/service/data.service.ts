@@ -21,7 +21,7 @@ export class DataService {
     return this.http.get<CityInterface[]>('./assets/data/CITIES.json');
   }
 
-  loadBuilding(): Observable<BuildingInterface[]> {
+  loadBuildings(): Observable<BuildingInterface[]> {
     return this.http.get<BuildingInterface[]>('./assets/data/BUILDINGS.json');
   }
 

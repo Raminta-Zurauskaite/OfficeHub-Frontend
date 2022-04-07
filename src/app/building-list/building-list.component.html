@@ -1,0 +1,9 @@
+<div>
+    <h4>Choose your building</h4>
+    <div *ngFor="let building of buildings">
+        <button routerLink="/building">
+            {{building.name}}<br>
+            {{building.address}}
+        </button>
+    </div>
+</div>
