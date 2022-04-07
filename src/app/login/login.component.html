@@ -1,25 +1,14 @@
-<div class="container w-50 justify-content-center">
-    <div class="users-container row justify-content-center">
-        <div class="col-10 align-self-center">
-            <h4>Choose an account</h4>
-        </div>
+<div>
+    <h4>Choose an account</h4>
+    <div *ngFor="let user of users">
+        <button routerLink="/city">
+            {{user.name}}
+            {{user.surname}} <br>
+            {{user.email}}
+        </button>
     </div>
-    <div class="d-grid gap-1 accountButtons">
-        <div *ngFor="let user of users">
-            <div class="row justify-content-start">
-                <div class="col-10  align-self-center">
-                    <a class="btn btn-outline-secondary btn-lg text-start px-4" role="button"
-                        routerLink="/city">{{user.name}}
-                        {{user.surname}} <br>
-                        {{user.email}}</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-10 align-self-start">
-                <a class="btn btn-outline-secondary btn-lg py-1" href="" role="button">Add account</a>
-            </div>
-        </div>
-    </div>
+
+
+    <button href="">Add account</button>
 </div>

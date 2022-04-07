@@ -2,6 +2,8 @@ import { UserInterface } from '../../assets/data/User';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CityInterface } from 'src/assets/data/City';
+import { BuildingInterface } from 'src/assets/data/Building';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +17,12 @@ export class DataService {
     return this.http.get<UserInterface[]>('./assets/data/USERS.json');
   }
 
-  loadCities(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>('./assets/data/CITIES.json');
+  loadCities(): Observable<CityInterface[]> {
+    return this.http.get<CityInterface[]>('./assets/data/CITIES.json');
   }
 
-  loadBuilding(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>('./assets/data/BUILDINGS.json');
+  loadBuilding(): Observable<BuildingInterface[]> {
+    return this.http.get<BuildingInterface[]>('./assets/data/BUILDINGS.json');
   }
 
 
