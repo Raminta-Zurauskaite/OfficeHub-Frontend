@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CityInterface } from 'src/assets/data/City';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-city-list',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./city-list.component.scss']
 })
 export class CityListComponent implements OnInit {
+  // cities: CityInterface[] = [];
 
-  constructor() { }
+  // constructor(private _cityService: DataService) { }
 
   ngOnInit(): void {
+    // this._cityService.loadUsers().subscribe(
+    //   (data: CityInterface[]) => { this.cities = data }
+    // );
   }
 
 }

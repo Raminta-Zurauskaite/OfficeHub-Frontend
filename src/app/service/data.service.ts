@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class UserService {
+export class DataService {
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +16,11 @@ export class UserService {
   }
 
   loadCities(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>('./assets/data/USERS.json');
+    return this.http.get<UserInterface[]>('./assets/data/CITIES.json');
+  }
+
+  loadBuilding(): Observable<UserInterface[]> {
+    return this.http.get<UserInterface[]>('./assets/data/BUILDINGS.json');
   }
 
 
