@@ -1,0 +1,10 @@
+<div>
+    <h4>Choose your city</h4>
+    <div *ngFor="let city of cities">
+        <button routerLink="/building">
+            {{city.city}}<br>
+            {{city.country}}
+        </button>
+    </div>
+    <button routerLink="/">Back</button>
+</div>

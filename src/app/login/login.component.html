@@ -1,0 +1,11 @@
+<div>
+    <h4>Choose an account</h4>
+    <div *ngFor="let user of users">
+        <button routerLink="/city">
+            {{user.name}}
+            {{user.surname}} <br>
+            {{user.email}}
+        </button>
+    </div>
+    <button href="">Add account</button>
+</div>
