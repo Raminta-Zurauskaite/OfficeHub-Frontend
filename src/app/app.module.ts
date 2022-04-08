@@ -8,6 +8,8 @@ import { CityListComponent } from './city-list/city-list.component';
 import { LoginComponent } from './login/login.component';
 import { BuildingListComponent } from './building-list/building-list.component';
 import { FloorListComponent } from './floor-list/floor-list.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { FloorListComponent } from './floor-list/floor-list.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
