@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { BuildingListComponent } from './building-list/building-list.component';
 import { FloorListComponent } from './floor-list/floor-list.component';
 import { CookieService } from 'ngx-cookie-service';
+import { CharacterListComponent } from './character-list/character-list.component';
 
 
 
@@ -18,7 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
     LoginComponent,
     CityListComponent,
     BuildingListComponent,
-    FloorListComponent
+    FloorListComponent,
+    CharacterListComponent
   ],
   imports: [
     BrowserModule,
