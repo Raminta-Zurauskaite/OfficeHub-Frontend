@@ -10,10 +10,10 @@ import { DataService } from '../service/data.service';
 export class LoginComponent implements OnInit {
   users: UserInterface[] = [];
 
-  constructor(private _userService: DataService) { }
+  constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
-    this._userService.loadUsers().subscribe(
+    this._dataService.loadUsers().subscribe(
       (data: UserInterface[]) => { this.users = data }
     );
   }
