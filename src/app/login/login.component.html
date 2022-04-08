@@ -1,7 +1,7 @@
 <div>
     <h4>Choose an account</h4>
     <div *ngFor="let user of users">
-        <button routerLink="/city">
+        <button routerLink="/city" (click)="setCookie(user.name)">
             {{user.name}}
             {{user.surname}} <br>
             {{user.email}}
@@ -9,3 +9,16 @@
     </div>
     <button href="">Add account</button>
 </div>
+
+<!-- <div style="text-align: center;">
+    <h5>Cookies In Angular</h5>
+    <h5>Cookie Data:</h5>
+    <p>Name: {{cookie_name}}</p>
+    <p>Cookie Object: {{all_cookies | json}}</p>
+    <br>
+    <button (click)="setCookie()">Set Cookies</button>
+    <br><br>
+    <button (click)="deleteCookie()">Delete</button>
+    <br><br>
+    <button (click)="deleteAll()">Delete All</button>
+</div> -->
