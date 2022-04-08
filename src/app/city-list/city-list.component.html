@@ -1,0 +1,10 @@
+<div>
+    <h4>Choose your city</h4>
+    <div *ngFor="let city of cities">
+        <button routerLink="/building" (click)="setCookie(city.city)">
+            {{city.city}}<br>
+            {{city.country}}
+        </button>
+    </div>
+    <button routerLink="/" (click)="deleteLastCookie()">Back</button>
+</div>
