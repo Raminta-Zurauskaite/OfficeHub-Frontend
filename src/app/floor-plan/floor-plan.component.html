@@ -1,6 +1,6 @@
 <br>
 <mat-card class="demo-inline-calendar-card">
-    <mat-calendar [(selected)]="selected"></mat-calendar>
+    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
 </mat-card>
 
 
@@ -10,15 +10,15 @@
 
 <mat-form-field appearance="fill">
     <mat-label>Select workspace</mat-label>
-    <mat-select [(value)]="select">
-        <mat-option *ngFor="let desk of desks" [value]="desk.id" (click)="onChange(select)">{{desk.id}}
+    <mat-select [formControl]="selectedDesk" required>
+        <mat-option *ngFor="let desk of desks" [value]="desk.id">{{desk.id}}
         </mat-option>
     </mat-select>
+    <mat-error *ngIf="selectedDesk.hasError('required')">Please choose an animal</mat-error>
 </mat-form-field>
-
-selected desk {{select}}
+<br>
+<button mat-raised-button routerLink="" type="submit" (click)="onSubmit()" [disabled]="selectedDesk.invalid">Confirm
+    booking</button>
 
 <br>
-
-<button mat-raised-button routerLink="/selectfloor">Back</button> <button mat-raised-button routerLink="">Confirm
-    booking</button>
+<button mat-raised-button routerLink="/selectfloor">Back</button>
