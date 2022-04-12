@@ -1,0 +1,24 @@
+<br>
+<mat-card class="demo-inline-calendar-card">
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+</mat-card>
+
+
+<lib-ngx-image-zoom [thumbImage]=myThumbnail [fullImage]=myFullresImage zoomMode='toggle' [magnification]="2">
+</lib-ngx-image-zoom>
+
+
+<mat-form-field appearance="fill">
+    <mat-label>Select workspace</mat-label>
+    <mat-select [(value)]="select">
+        <mat-option *ngFor="let desk of desks" [value]="desk.id" (click)="onChange(select)">{{desk.id}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+selected desk {{select}}
+
+<br>
+
+<button mat-raised-button routerLink="/selectfloor">Back</button> <button mat-raised-button routerLink="">Confirm
+    booking</button>

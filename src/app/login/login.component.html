@@ -1,13 +1,13 @@
 <div>
     <h4>Choose an account</h4>
     <div *ngFor="let user of users">
-        <button routerLink="/city" (click)="setCookie(user.name)">
+        <button routerLink="/selectcity" (click)="setCookie(user.name)">
             {{user.name}}
             {{user.surname}} <br>
             {{user.email}}
         </button>
     </div>
-    <button href="">Add account</button>
+    <button href="" (click)="deleteAll()">Add account</button>
 </div>
 
 <!-- <div style="text-align: center;">

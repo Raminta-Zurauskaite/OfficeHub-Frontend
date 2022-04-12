@@ -1,7 +1,7 @@
 <div>
     <h4>Choose your floor</h4>
     <div *ngFor="let floor of floors">
-        <button routerLink="/floor" (click)="setCookie(floor.floorNumber)">
+        <button routerLink="/selectdesk" (click)="setCookie(floor.floorNumber)">
             Floor: {{floor.floorNumber}}<br>
         </button>
     </div>
