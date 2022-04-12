@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CityInterface } from 'src/assets/data/City';
 import { BuildingInterface } from 'src/assets/data/Building';
 import { FloorInterface } from 'src/assets/data/Floor';
+import { DeskInterface } from 'src/assets/data/Desks';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,13 @@ export class DataService {
   loadBuildings(): Observable<BuildingInterface[]> {
     return this.http.get<BuildingInterface[]>('././assets/data/BUILDINGS.json');
   }
+
   loadFloors(): Observable<FloorInterface[]> {
     return this.http.get<FloorInterface[]>('././assets/data/FLOORS.json');
+  }
+
+  loadDesks(): Observable<DeskInterface[]> {
+    return this.http.get<DeskInterface[]>('././assets/data/DESKS.json');
   }
 
 

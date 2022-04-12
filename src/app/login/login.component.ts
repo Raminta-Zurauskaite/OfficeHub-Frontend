@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit {
     this.cookie.setCookie("user", value);
   }
 
+  deleteAll() {
+    this.cookie.deleteAll();
+  }
 
 
 }
