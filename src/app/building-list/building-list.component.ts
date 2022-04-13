@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { BuildingInterface } from 'src/assets/data/Building';
-import { CookiesService } from '../service/cookies/cookies.service';
 import { DataService } from '../service/data/data.service';
 
 
@@ -10,23 +11,23 @@ import { DataService } from '../service/data/data.service';
   styleUrls: ['./building-list.component.scss']
 })
 export class BuildingListComponent implements OnInit {
-  buildings: BuildingInterface[] = [];
+  buildings$: Observable<BuildingInterface[]> = of();
 
-  constructor(private _dataService: DataService, private cookie: CookiesService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this._dataService.loadBuildings().subscribe(
-      (data: BuildingInterface[]) => { this.buildings = data }
-    );
+    this.buildings$ = this.dataService.loadBuildings();
   }
 
-  setCookie(value: string) {
-    this.cookie.setCookie("building", value);
+  onBuildingSelectClick(value: string) {
+    this.router.navigate(['/floor']);
+    localStorage.setItem("building", value);
   }
 
-  deleteLastCookie() {
-    this.cookie.deleteCookie("building");
-    this.cookie.deleteCookie("city");
+  onBackButtonClick() {
+    localStorage.removeItem("building");
+    localStorage.removeItem("city");
+    this.router.navigate(['/city']);
   }
 
 }

@@ -1,10 +1,10 @@
 <div>
     <h4>Choose your building</h4>
-    <div *ngFor="let building of buildings">
-        <button routerLink="/selectfloor" (click)="setCookie(building.name)">
+    <div *ngFor="let building of buildings$ | async">
+        <button (click)="onBuildingSelectClick(building.name)">
             {{building.name}}<br>
             {{building.address}}
         </button>
     </div>
-    <button routerLink="/selectcity" (click)="deleteLastCookie()">Back</button>
+    <button (click)="onBackButtonClick()">Back</button>
 </div>

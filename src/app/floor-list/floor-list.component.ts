@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CityInterface } from 'src/assets/data/City';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { FloorInterface } from 'src/assets/data/Floor';
-import { CookiesService } from '../service/cookies/cookies.service';
 import { DataService } from '../service/data/data.service';
 
 @Component({
@@ -10,24 +10,23 @@ import { DataService } from '../service/data/data.service';
   styleUrls: ['./floor-list.component.scss']
 })
 export class FloorListComponent implements OnInit {
+  floors$: Observable<FloorInterface[]> = of();
 
-  floors: FloorInterface[] = [];
-
-  constructor(private _dataService: DataService, private cookie: CookiesService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this._dataService.loadFloors().subscribe(
-      (data: FloorInterface[]) => { this.floors = data }
-    );
+    this.floors$ = this.dataService.loadFloors();
   }
 
-  setCookie(value: string) {
-    this.cookie.setCookie("floor", value);
+  onBuildingSelectClick(value: string) {
+    this.router.navigate(['/desk']);
+    localStorage.setItem("floor", value);
   }
 
-  deleteLastCookie() {
-    this.cookie.deleteCookie("floor");
-    this.cookie.deleteCookie("building");
+  onBackButtonClick() {
+    localStorage.removeItem("floor");
+    localStorage.removeItem("building");
+    this.router.navigate(['/building']);
   }
 
 }

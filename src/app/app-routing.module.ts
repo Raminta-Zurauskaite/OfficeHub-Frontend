@@ -8,10 +8,10 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'selectcity', component: CityListComponent },
-  { path: 'selectbuilding', component: BuildingListComponent },
-  { path: 'selectfloor', component: FloorListComponent },
-  { path: 'selectdesk', component: FloorPlanComponent },
+  { path: 'city', component: CityListComponent },
+  { path: 'building', component: BuildingListComponent },
+  { path: 'floor', component: FloorListComponent },
+  { path: 'desk', component: FloorPlanComponent },
 ];
 
 @NgModule({
