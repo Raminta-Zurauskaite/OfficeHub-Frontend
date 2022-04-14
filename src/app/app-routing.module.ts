@@ -4,6 +4,7 @@ import { BuildingListComponent } from './building-list/building-list.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { FloorListComponent } from './floor-list/floor-list.component';
+import { FloorPlanComponent } from './floor-plan/floor-plan.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: 'city', component: CityListComponent },
   { path: 'building', component: BuildingListComponent },
   { path: 'floor', component: FloorListComponent },
-  { path: 'character', component: CharacterListComponent }
+  { path: 'desk', component: FloorPlanComponent },
 ];
 
 @NgModule({

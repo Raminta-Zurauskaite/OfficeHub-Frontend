@@ -1,7 +1,8 @@
-import { CookiesService } from './../service/cookies/cookies.service';
 import { Component, OnInit } from '@angular/core';
 import { UserInterface } from 'src/assets/data/User';
 import { DataService } from '../service/data/data.service';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -10,21 +11,25 @@ import { DataService } from '../service/data/data.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  users: UserInterface[] = [];
+  users$: Observable<UserInterface[]> = of();
 
 
-  constructor(private _userService: DataService, private cookie: CookiesService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this._userService.loadUsers().subscribe(
-      (data: UserInterface[]) => { this.users = data }
-    );
+    this.users$ = this.dataService.loadUsers();
   }
 
-  setCookie(value: string) {
-    this.cookie.setCookie("user", value);
+  onUserSelectClick(value: number) {
+    this.router.navigate(['/city']);
+    localStorage.setItem("user", value.toString());
   }
 
+
+  onClickDeleteAllCookies() {
+    localStorage.clear();
+    window.location.reload();
+  }
 
 
 }
