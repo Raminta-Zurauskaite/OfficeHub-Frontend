@@ -8,7 +8,6 @@ import { CityListComponent } from './city-list/city-list.component';
 import { LoginComponent } from './login/login.component';
 import { BuildingListComponent } from './building-list/building-list.component';
 import { FloorListComponent } from './floor-list/floor-list.component';
-import { CookieService } from 'ngx-cookie-service';
 import { FloorPlanComponent } from './floor-plan/floor-plan.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,7 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     ReactiveFormsModule
   ],
-  providers: [CookieService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

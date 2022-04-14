@@ -1,45 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { CookiesService } from '../service/cookies/cookies.service';
-import { FormControl, Validators } from '@angular/forms';
-import { DeskInterface } from 'src/assets/data/Desks';
-import { DataService } from '../service/data/data.service';
+import { Component, OnInit } from '@angular/core'
+import { FormControl, Validators } from '@angular/forms'
+import { DeskInterface } from 'src/assets/data/Desks'
+import { DataService } from '../service/data/data.service'
+import { Observable, of } from 'rxjs'
 
 @Component({
-  selector: 'app-floor-plan',
-  templateUrl: './floor-plan.component.html',
-  styleUrls: ['./floor-plan.component.scss']
+    selector: 'app-floor-plan',
+    templateUrl: './floor-plan.component.html',
+    styleUrls: ['./floor-plan.component.scss'],
 })
 export class FloorPlanComponent implements OnInit {
-  myThumbnail = "assets/images/20-floor.png";
-  myFullresImage = "assets/images/20-floor.png";
-  desks: DeskInterface[] = [];
-  format: string = "";
+    myThumbnail = 'assets/images/20-floor.png'
+    myFullresImage = 'assets/images/20-floor.png'
+    desks$: Observable<DeskInterface[]> = of()
 
-  selectedDate!: Date;
-  selectedDesk = new FormControl('', [Validators.required]);
+    selectedDate = new Date()
+    selectedDesk = new FormControl('', [Validators.required])
 
-  constructor(private dataService: DataService, private cookie: CookiesService) { }
+    constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    this.dataService.loadDesks().subscribe(
-      (data: DeskInterface[]) => { this.desks = data });
+    ngOnInit(): void {
+        this.desks$ = this.dataService.loadDesks()
+    }
 
-  }
-
-  onSubmit() {
-    this.setCookie("deskId", this.selectedDesk.value);
-    this.format = this.selectedDate.toISOString().slice(0, 10);
-    this.setCookie("booking_date", this.format);
-  }
-
-
-
-
-
-
-  setCookie(name: string, value: string) {
-    this.cookie.setCookie(name, value);
-
-  }
-
+    onSubmit() {
+        localStorage.setItem('deskId', this.selectedDesk.value)
+        localStorage.setItem(
+            'booking_date',
+            this.selectedDate.toISOString().slice(0, 10)
+        )
+    }
 }
