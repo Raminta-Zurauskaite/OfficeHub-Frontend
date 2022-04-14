@@ -1,11 +1,8 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
+    <mat-toolbar-row class="navigation">
         <h1>OfficeHub</h1>
-        <span class="menu-spacer"></span>
-        <div>
-            <a mat-button [routerLink]="'/'"> Logout </a>
-            <a mat-button [routerLink]="'/city'"> Choose city </a>
-        </div>
+        <a mat-button [routerLink]="'/'">Logout</a>
+        <a mat-button [routerLink]="'/city'">User icon</a>
     </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
