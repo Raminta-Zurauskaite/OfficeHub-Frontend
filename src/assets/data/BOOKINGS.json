@@ -1,0 +1,10 @@
+[
+    {
+    "id": 123,
+    "user_id": 1,
+    "building_name": "Vilnius HQ",
+    "floor": "3",
+    "desk_id": 359,
+    "date": "2022-04-22"
+    }
+]

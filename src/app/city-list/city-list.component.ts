@@ -4,30 +4,27 @@ import { Observable, of } from 'rxjs';
 import { CityInterface } from 'src/assets/data/City';
 import { DataService } from '../service/data/data.service';
 
-
 @Component({
   selector: 'app-city-list',
   templateUrl: './city-list.component.html',
-  styleUrls: ['./city-list.component.scss']
+  styleUrls: ['./city-list.component.scss'],
 })
 export class CityListComponent implements OnInit {
   cities$: Observable<CityInterface[]> = of();
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.cities$ = this.dataService.loadCities();
   }
 
-  onCitySelectClick(value: string) {
+  onCitySelectClick(value: number) {
     this.router.navigate(['/building']);
-    localStorage.setItem("city", value);
+    localStorage.setItem('city', value.toString());
   }
 
   onBackButtonClick() {
-    localStorage.removeItem("city");
-    localStorage.removeItem("user");
-    this.router.navigate(['/']);
+    localStorage.removeItem('city');
+    this.router.navigate(['/bookings']);
   }
-
 }

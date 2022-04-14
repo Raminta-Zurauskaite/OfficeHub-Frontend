@@ -18,7 +18,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { BookingsComponent } from './bookings/bookings.component';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CityListComponent,
     BuildingListComponent,
     FloorListComponent,
-    FloorPlanComponent
+    FloorPlanComponent,
+    BookingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,9 +44,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatButtonModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatListModule,
+    MatSidenavModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

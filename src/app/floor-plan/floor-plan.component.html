@@ -1,5 +1,5 @@
 <br>
-<mat-card class="demo-inline-calendar-card">
+<mat-card class="calendar-card">
     <mat-calendar [(selected)]="selectedDate"></mat-calendar>
 </mat-card>
 
@@ -19,4 +19,4 @@
     booking</button>
 
 <br>
-<button mat-raised-button routerLink="/floor">Back</button>
+<button mat-raised-button (click)="onBackButtonClick()">Back</button>

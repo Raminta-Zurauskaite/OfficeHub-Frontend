@@ -7,26 +7,25 @@ import { DataService } from '../service/data/data.service';
 @Component({
   selector: 'app-floor-list',
   templateUrl: './floor-list.component.html',
-  styleUrls: ['./floor-list.component.scss']
+  styleUrls: ['./floor-list.component.scss'],
 })
 export class FloorListComponent implements OnInit {
   floors$: Observable<FloorInterface[]> = of();
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.floors$ = this.dataService.loadFloors();
   }
 
-  onBuildingSelectClick(value: string) {
+  onBuildingSelectClick(value: number) {
     this.router.navigate(['/desk']);
-    localStorage.setItem("floor", value);
+    localStorage.setItem('floor', value.toString());
   }
 
   onBackButtonClick() {
-    localStorage.removeItem("floor");
-    localStorage.removeItem("building");
+    localStorage.removeItem('floor');
+    localStorage.removeItem('building');
     this.router.navigate(['/building']);
   }
-
 }

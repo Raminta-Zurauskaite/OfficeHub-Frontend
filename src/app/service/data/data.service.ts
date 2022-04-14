@@ -6,14 +6,13 @@ import { CityInterface } from 'src/assets/data/City';
 import { BuildingInterface } from 'src/assets/data/Building';
 import { FloorInterface } from 'src/assets/data/Floor';
 import { DeskInterface } from 'src/assets/data/Desks';
+import { BookingsInterface } from 'src/assets/data/Bookings';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class DataService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   loadUsers(): Observable<UserInterface[]> {
     return this.http.get<UserInterface[]>('././assets/data/USERS.json');
@@ -35,5 +34,7 @@ export class DataService {
     return this.http.get<DeskInterface[]>('././assets/data/DESKS.json');
   }
 
-
+  loadBookings(): Observable<BookingsInterface[]> {
+    return this.http.get<BookingsInterface[]>('././assets/data/BOOKINGS.json');
+  }
 }
