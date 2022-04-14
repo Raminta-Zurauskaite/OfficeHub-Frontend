@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BuildingListComponent } from './building-list/building-list.component';
-import { CharacterListComponent } from './character-list/character-list.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { FloorListComponent } from './floor-list/floor-list.component';
 import { FloorPlanComponent } from './floor-plan/floor-plan.component';
