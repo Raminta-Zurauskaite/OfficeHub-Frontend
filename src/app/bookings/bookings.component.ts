@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, filter } from 'rxjs';
 import { BookingsInterface } from 'src/assets/data/Bookings';
 import { DataService } from '../service/data/data.service';
 
@@ -11,8 +11,12 @@ import { DataService } from '../service/data/data.service';
   styleUrls: ['./bookings.component.scss'],
 })
 export class BookingsComponent implements OnInit {
-  bookings$: Observable<BookingsInterface[]> = of();
+  @ViewChild('calendar', { static: false })
+  calendar!: MatCalendar<Date>;
   selectedDate = new Date();
+  isDisabled: boolean = true;
+
+  bookings$: Observable<BookingsInterface[]> = of();
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -24,7 +28,9 @@ export class BookingsComponent implements OnInit {
     this.router.navigate(['/city']);
   }
 
-  onSelectedBookingClick() {
-    this.selectedDate = new Date(2022, 4, 22);
+  onSelectedBookingClick(bookingDate: string) {
+    this.isDisabled = false;
+    this.selectedDate = new Date(bookingDate);
+    this.calendar._goToDateInView(this.selectedDate, 'month');
   }
 }

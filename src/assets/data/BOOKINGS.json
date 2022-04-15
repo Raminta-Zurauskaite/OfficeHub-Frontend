@@ -5,6 +5,14 @@
     "building_name": "Vilnius HQ",
     "floor": "3",
     "desk_id": 359,
-    "date": "2022-04-22"
+    "date": "2022-05-22"
+    },
+    {
+    "id": 124,
+    "user_id": 1,
+    "building_name": "Vilnius HQ",
+    "floor": "3",
+    "desk_id": 360,
+    "date": "2022-07-22"
     }
 ]
