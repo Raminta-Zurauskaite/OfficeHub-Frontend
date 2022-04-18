@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row class="navigation">
         <h1>OfficeHub</h1>
-        <a mat-button [routerLink]="'/'">Logout</a>
-        <a mat-button [routerLink]="'/city'">User icon</a>
+        <a *ngIf="isLoggedIn()" (click)="onBackButtonClick()" mat-button [routerLink]="'/'">Logout</a>
+        <a *ngIf="isLoggedIn()" mat-button [routerLink]="'/city'">User icon</a>
     </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
