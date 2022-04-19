@@ -4,10 +4,10 @@
             <ng-container *ngIf="bookings.length; else noBookings">
                 <mat-selection-list #bookingsList [multiple]="false">
                     <h4>List of your existing bookings:</h4>
-                    <mat-list-option *ngFor="let booking of bookings" [value]="booking.id"
-                        (click)="onSelectedBookingClick(booking.date)">
-                        {{booking.desk_id}}, {{booking.date}}
-                        {{booking.building_name}}, {{booking.floor}}
+                    <mat-list-option *ngFor="let booking of bookings" [value]="booking.booking_id"
+                        (click)="onSelectedBookingClick(booking.booking_date)">
+                        {{booking.desk_number}}, {{booking.booking_date}}
+                        {{booking.building_name}}, {{booking.floor_name}}
                     </mat-list-option>
                     <div class="buttonAligment">
                         <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>

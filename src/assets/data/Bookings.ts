@@ -1,8 +1,9 @@
 export interface BookingsInterface {
-  id: number;
+  booking_id: number;
   user_id: number;
+  desk_number: number;
+  floor_name: string;
   building_name: string;
-  floor: string;
-  desk_id: number;
-  date: string;
+  city_name: string;
+  booking_date: string;
 }
