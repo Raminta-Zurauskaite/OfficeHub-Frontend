@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   onUserSelectClick(value: number) {
-    this.router.navigate(['/bookings']);
     localStorage.setItem('user', value.toString());
+    this.router.navigate(['/bookings']);
   }
 
   onClickDeleteAllCookies() {

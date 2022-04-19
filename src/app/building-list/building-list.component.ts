@@ -15,7 +15,7 @@ export class BuildingListComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.buildings$ = this.dataService.loadBuildings();
+    this.buildings$ = this.dataService.loadBuildings(localStorage.getItem('city')!);
   }
 
   onBuildingSelectClick(value: number) {

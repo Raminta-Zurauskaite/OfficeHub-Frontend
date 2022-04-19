@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 export class FloorPlanComponent implements OnInit {
   myThumbnail = 'assets/images/20-floor.png';
   myFullresImage = 'assets/images/20-floor.png';
-  desks$: Observable<DeskInterface[]> = of();
+  allDesks$: Observable<DeskInterface[]> = of();
+  bookedDesks$: Observable<DeskInterface[]> = of();
 
   selectedDate = new Date();
   selectedDesk = new FormControl('', [Validators.required]);
@@ -21,13 +22,16 @@ export class FloorPlanComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.desks$ = this.dataService.loadDesks();
+    this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
   }
 
   onSubmit() {
-    localStorage.setItem('deskId', this.selectedDesk.value);
-    localStorage.setItem(
-      'booking_date',
+    this.dataService.createBooking(
+      localStorage.getItem('user')!,
+      localStorage.getItem('city')!,
+      localStorage.getItem('building')!,
+      localStorage.getItem('floor')!,
+      this.selectedDesk.value,
       this.selectedDate.toISOString().slice(0, 10)
     );
     this.router.navigate(['/bookings']);

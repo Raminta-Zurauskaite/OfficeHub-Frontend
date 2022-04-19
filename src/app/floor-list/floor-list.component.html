@@ -1,8 +1,8 @@
 <div>
     <h4>Choose your floor</h4>
     <div *ngFor="let floor of floors$ | async">
-        <button (click)="onBuildingSelectClick(floor.id)">
-            Floor: {{floor.floorNumber}}<br>
+        <button (click)="onBuildingSelectClick(floor.floorID)">
+            Floor: {{floor.floorName}}<br>
         </button>
     </div>
     <button (click)="onBackButtonClick()">Back</button>
