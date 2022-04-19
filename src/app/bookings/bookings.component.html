@@ -1,0 +1,44 @@
+<mat-sidenav-container class="fullScreenNavContainer">
+    <mat-sidenav mode="side" opened position="end" class="sideNavigationBar" fixedBottomGap="100px">
+        <ng-container *ngIf="bookings$ | async as bookings">
+            <ng-container *ngIf="bookings.length; else noBookings">
+                <mat-selection-list #bookingsList [multiple]="false">
+                    <h4>List of your existing bookings:</h4>
+                    <mat-list-option *ngFor="let booking of bookings" [value]="booking.id"
+                        (click)="onSelectedBookingClick(booking.date)">
+                        {{booking.desk_id}}, {{booking.date}}
+                        {{booking.building_name}}, {{booking.floor}}
+                    </mat-list-option>
+                    <div class="buttonAligment">
+                        <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
+                        
+                        <button mat-raised-button *ngIf="!isDisabled">Cancel booking</button>
+                    </div>
+                </mat-selection-list>
+            </ng-container>
+        </ng-container>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <ng-container *ngIf="bookings$ | async as bookings">
+            <ng-container *ngIf="bookings.length; else noBookings">
+                <div class="booking-info-container" *ngIf="!isDisabled">
+                    <div class="booking-info-child calendar">
+                        <mat-card class="calendar-card">
+                            <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
+                        </mat-card>
+                    </div>
+                    <div class="booking-info-child img">
+                        <img src="assets/images/20-floor.png" alt="Floor layout">
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #noBookings>
+    <p>You have no bookings</p>
+    <div class="buttonAligment">
+        <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
+    </div>
+</ng-template>

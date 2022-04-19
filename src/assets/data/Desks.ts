@@ -1,3 +1,3 @@
 export interface DeskInterface {
-    id: string;
+  id: number;
 }

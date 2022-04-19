@@ -1,7 +1,7 @@
 <div>
     <h4>Choose your city</h4>
     <div *ngFor="let city of cities$ | async">
-        <button (click)="onCitySelectClick(city.city)">
+        <button (click)="onCitySelectClick(city.id)">
             {{city.city}}<br>
             {{city.country}}
         </button>

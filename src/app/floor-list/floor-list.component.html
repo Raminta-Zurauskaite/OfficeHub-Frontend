@@ -1,7 +1,7 @@
 <div>
     <h4>Choose your floor</h4>
     <div *ngFor="let floor of floors$ | async">
-        <button (click)="onBuildingSelectClick(floor.floorNumber)">
+        <button (click)="onBuildingSelectClick(floor.id)">
             Floor: {{floor.floorNumber}}<br>
         </button>
     </div>
