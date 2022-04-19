@@ -1,0 +1,11 @@
+<div>
+    <h4>Choose an account</h4>
+    <div *ngFor="let user of users$ | async">
+        <button (click)="onUserSelectClick(user.id)">
+            {{user.name}}
+            {{user.surname}} <br>
+            {{user.email}}
+        </button>
+    </div>
+    <button (click)="onClickDeleteAllCookies()">Add account</button>
+</div>
