@@ -23,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BookingsComponent } from './bookings/bookings.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     FloorListComponent,
     FloorPlanComponent,
     BookingsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

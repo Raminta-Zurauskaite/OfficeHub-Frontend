@@ -7,19 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'officehub';
-
-
-  isLoggedIn() {
-    const idToken = localStorage.getItem('user');
-    if (idToken) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-  onBackButtonClick() {
-    localStorage.clear();
-  }
 }
