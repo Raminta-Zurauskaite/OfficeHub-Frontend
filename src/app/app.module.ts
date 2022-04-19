@@ -20,6 +20,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { BookingsComponent } from './bookings/bookings.component';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CityListComponent,
     BuildingListComponent,
     FloorListComponent,
-    FloorPlanComponent
+    FloorPlanComponent,
+    BookingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +47,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule,
+    MatSidenavModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
