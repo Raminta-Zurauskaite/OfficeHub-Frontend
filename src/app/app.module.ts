@@ -18,9 +18,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { BookingsComponent } from './bookings/bookings.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     FloorListComponent,
     FloorPlanComponent,
     BookingsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,10 +49,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatToolbarModule,
     MatListModule,
     MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
