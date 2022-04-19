@@ -1,0 +1,22 @@
+<br>
+<mat-card class="calendar-card">
+    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+</mat-card>
+
+<img src="assets/images/20-floor.png" alt="Floor layout">
+
+<br>
+<mat-form-field appearance="fill">
+    <mat-label>Select workspace</mat-label>
+    <mat-select [formControl]="selectedDesk" required>
+        <mat-option *ngFor="let desk of desks$ | async" [value]="desk.id">{{desk.id}}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="selectedDesk.hasError('required')">Please choose an animal</mat-error>
+</mat-form-field>
+<br>
+<button mat-raised-button type="submit" (click)="onSubmit()" [disabled]="selectedDesk.invalid">Confirm
+    booking</button>
+
+<br>
+<button mat-raised-button (click)="onBackButtonClick()">Back</button>
