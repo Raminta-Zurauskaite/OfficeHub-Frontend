@@ -1,8 +1,11 @@
 /* Large */
 .navigation {
-    display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
+  display: flex;
+  justify-content: space-between;
+  }
+
+  .toolbarColor{
+    background-color:transparent;
   }
 
 /* Medium screens */
@@ -23,4 +26,20 @@
 
   .navigation a {
     display: block;
+}
+
+.headerButtonAligment{
+  display: flex;
+  align-items: center;
+}
+
+.roundedImage{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.roundedImage:hover{
+  cursor: pointer;
 }
