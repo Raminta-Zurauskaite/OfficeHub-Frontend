@@ -21,7 +21,7 @@ export class BookingsComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.bookings$ = this.dataService.loadBookings();
+    this.bookings$ = this.dataService.loadBookings(localStorage.getItem('user')!);
   }
 
   onClickStartBooking() {

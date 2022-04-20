@@ -9,7 +9,7 @@
 <mat-form-field appearance="fill">
     <mat-label>Select workspace</mat-label>
     <mat-select [formControl]="selectedDesk" required>
-        <mat-option *ngFor="let desk of desks$ | async" [value]="desk.id">{{desk.id}}
+        <mat-option *ngFor="let desk of allDesks$ | async" [value]="desk.deskID">{{desk.desk_number}}
         </mat-option>
     </mat-select>
     <mat-error *ngIf="selectedDesk.hasError('required')">Please choose table</mat-error>

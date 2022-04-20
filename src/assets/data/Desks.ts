@@ -1,3 +1,5 @@
 export interface DeskInterface {
-  id: number;
+  deskID: number;
+  floorID: number;
+  desk_number: number;
 }
