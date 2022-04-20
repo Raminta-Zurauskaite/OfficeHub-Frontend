@@ -14,27 +14,41 @@ import { BookingsInterface } from 'src/assets/data/Bookings';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  loadUsers(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>('././assets/data/USERS.json');
+  private ipAddress = 'http://localhost:8080/';
+
+  loadUsers(): Observable<UserInterface[]>{
+    return this.http.get<UserInterface[]>(this.ipAddress + 'user');
   }
 
   loadCities(): Observable<CityInterface[]> {
-    return this.http.get<CityInterface[]>('././assets/data/CITIES.json');
+    return this.http.get<CityInterface[]>(this.ipAddress + 'city');
   }
 
-  loadBuildings(): Observable<BuildingInterface[]> {
-    return this.http.get<BuildingInterface[]>('././assets/data/BUILDINGS.json');
+  loadBuildings(cityID: String): Observable<BuildingInterface[]> {
+    return this.http.get<BuildingInterface[]>(this.ipAddress + 'building/' + cityID);
   }
 
-  loadFloors(): Observable<FloorInterface[]> {
-    return this.http.get<FloorInterface[]>('././assets/data/FLOORS.json');
+  loadFloors(buildingID: String): Observable<FloorInterface[]> {
+    return this.http.get<FloorInterface[]>(this.ipAddress + 'floor/' + buildingID);
   }
 
-  loadDesks(): Observable<DeskInterface[]> {
-    return this.http.get<DeskInterface[]>('././assets/data/DESKS.json');
+  loadFloorDesks(floorID: String): Observable<DeskInterface[]> {
+    return this.http.get<DeskInterface[]>(this.ipAddress + 'desk/' + floorID);
   }
 
-  loadBookings(): Observable<BookingsInterface[]> {
-    return this.http.get<BookingsInterface[]>('././assets/data/BOOKINGS.json');
+  loadBookings(userID: String): Observable<BookingsInterface[]> {
+    return this.http.get<BookingsInterface[]>(this.ipAddress + 'booking/' + userID);
   }
+
+  createBooking(userID: String, cityID: String, buildingID: String, floorID: String, deskID: String, bookingDate: String){
+    this.http.post(this.ipAddress + 'booking/',
+      {
+        userID: userID,
+        cityID: cityID,
+        buildingID: buildingID,
+        floorID: floorID,
+        deskID: deskID,
+        bookingDate: bookingDate});
+  }
+
 }

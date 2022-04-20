@@ -1,18 +1,18 @@
 [
   {
-    "id": 1,
+    "userID": 1,
     "name": "Svensson",
     "surname": "Madelsvensson",
     "email": "medel.svensson@gmail.com"
   },
   {
-    "id": 2,
+    "userID": 2,
     "name": "John",
     "surname": "Doe",
     "email": "john.doe@gmail.com"
   },
   {
-    "id": 3,
+    "userID": 3,
     "name": "Keanu",
     "surname": "Reeves",
     "email": "jkeanu1234@gmail.com"

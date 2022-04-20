@@ -15,7 +15,7 @@ export class FloorListComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.floors$ = this.dataService.loadFloors();
+    this.floors$ = this.dataService.loadFloors(localStorage.getItem('building')!);
   }
 
   onBuildingSelectClick(value: number) {
