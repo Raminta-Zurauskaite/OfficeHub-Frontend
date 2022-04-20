@@ -19,7 +19,7 @@ export class FloorPlanComponent implements OnInit {
   selectedDate = new Date();
   selectedDesk = new FormControl('', [Validators.required]);
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
@@ -34,10 +34,16 @@ export class FloorPlanComponent implements OnInit {
       this.selectedDesk.value,
       this.selectedDate.toISOString().slice(0, 10)
     );
+    localStorage.removeItem('floor');
+    localStorage.removeItem('deskId');
+    localStorage.removeItem('booking_date');
+    localStorage.removeItem('city');
+    localStorage.removeItem('building');
     this.router.navigate(['/bookings']);
   }
 
   onBackButtonClick() {
+    localStorage.removeItem('floor');
     localStorage.removeItem('deskId');
     localStorage.removeItem('booking_date');
     this.router.navigate(['/floor']);

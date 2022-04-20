@@ -1,18 +1,20 @@
 [
     {
-    "id": 123,
+    "booking_id": 123,
     "user_id": 1,
+    "desk_number": 36,
+    "floor_name": "3",
     "building_name": "Vilnius HQ",
-    "floor": "3",
-    "desk_id": 359,
-    "date": "2022-05-22"
+    "city_name": "Vilnius",
+    "booking_date": "2022-05-22"
     },
     {
-    "id": 124,
+    "booking_id": 124,
     "user_id": 1,
+    "desk_number": 25,
+    "floor_name": "3",
     "building_name": "Vilnius HQ",
-    "floor": "3",
-    "desk_id": 360,
-    "date": "2022-07-22"
+    "city_name": "Vilnius",
+    "booking_date": "2022-07-22"
     }
 ]

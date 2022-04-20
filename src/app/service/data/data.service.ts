@@ -12,6 +12,9 @@ import { BookingsInterface } from 'src/assets/data/Bookings';
   providedIn: 'root',
 })
 export class DataService {
+  getBooking(arg0: number): Observable<BookingsInterface[]> {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient) {}
 
   private ipAddress = 'http://localhost:8080/';
