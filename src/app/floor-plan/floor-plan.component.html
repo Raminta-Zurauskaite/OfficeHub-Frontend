@@ -12,7 +12,7 @@
         <mat-option *ngFor="let desk of allDesks$ | async" [value]="desk.deskID">{{desk.desk_number}}
         </mat-option>
     </mat-select>
-    <mat-error *ngIf="selectedDesk.hasError('required')">Please choose a desk</mat-error>
+    <mat-error *ngIf="selectedDesk.hasError('required')">Please choose table</mat-error>
 </mat-form-field>
 <br>
 <button mat-raised-button type="submit" (click)="onSubmit()" [disabled]="selectedDesk.invalid">Confirm

@@ -1,7 +1,12 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="toolbarColor">
     <mat-toolbar-row class="navigation">
-        <h1>OfficeHub</h1>
-        <a *ngIf="isLoggedIn()" (click)="onBackButtonClick()">Logout</a>
-        <a *ngIf="isLoggedIn()" mat-button [routerLink]="'/bookings'">User icon</a>
+        <img src="assets/images/logo.png" alt="Office hub logo">
+        <div class="headerButtonAligment">
+            <a mat-button *ngIf="isLoggedIn()" (click)="onBackButtonClick()" >Logout</a>
+            <div *ngIf="isLoggedIn()"  [routerLink]="'/bookings'">
+                <img class="roundedImage" src="assets/images/User_icon.jpg" alt="User avatar icon picture" >
+                <!-- <a mat-button *ngIf="isLoggedIn()"  [routerLink]="'/bookings'">User icon</a> -->
+            </div>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>

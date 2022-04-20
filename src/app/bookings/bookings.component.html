@@ -22,12 +22,12 @@
         <ng-container *ngIf="bookings$ | async as bookings">
             <ng-container *ngIf="bookings.length; else noBookings">
                 <div class="booking-info-container" *ngIf="!isDisabled">
-                    <div class="booking-info-child calendar">
+                    <div class="calendar">
                         <mat-card class="calendar-card">
                             <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
                         </mat-card>
                     </div>
-                    <div class="booking-info-child img">
+                    <div class="image">
                         <img src="assets/images/20-floor.png" alt="Floor layout">
                     </div>
                 </div>
