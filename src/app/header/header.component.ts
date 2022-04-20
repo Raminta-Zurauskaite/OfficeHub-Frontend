@@ -27,4 +27,13 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/']);
   }
+
+  onUserButtonClick() {
+    localStorage.removeItem('floor');
+    localStorage.removeItem('deskId');
+    localStorage.removeItem('booking_date');
+    localStorage.removeItem('city');
+    localStorage.removeItem('building');
+    this.router.navigate(['/bookings']);
+  }
 }
