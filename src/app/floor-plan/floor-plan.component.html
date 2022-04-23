@@ -1,9 +1,58 @@
-<div>
 <mat-card class="calendar-card">
     <mat-calendar [(selected)]="selectedDate"></mat-calendar>
 </mat-card>
 
-<img src="assets/images/20-floor.png" alt="Floor layout">
+<div class="tables-container">
+    <img id="background-image" src="assets/images/floor_plan.png" alt="Floor layout">
+    <svg id="tables-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 1170">
+        <path class="Table1" (click)="onTableSelect(1)" d="M98.5 282v19.62h36.13V282h-10.75v-16.62h-14.13v16.63Z" />
+        <path class="Table2" (click)="onTableSelect(2)" d="M136.13 282v19.62h35.62V282h-10.59v-16.62h-13.94v16.63Z" />
+        <path class="Table3" (click)="onTableSelect(3)" d="M172.38 282v19.62h36.75V282H198.2v-16.62h-14.38v16.63Z" />
+        <path class="Table4" (click)="onTableSelect(4)" d="M134.94 322.27v-19.71H98.19v19.71h10.93V339h14.37v-16.73Z" />
+        <path class="Table5" (click)="onTableSelect(5)" d="M171.19 322.27v-19.71h-35.63v19.71h10.6V339h13.93v-16.73Z" />
+        <path class="Table6" d="M208.69 322.27v-19.71h-35.63v19.71h10.6V339h13.93v-16.73Z" />
+        <path class="Table7" d="M98.63 370.62v19.88h36.12v-19.88h-10.74v-16.87h-14.13v16.87Z" />
+        <path class="Table8" d="M136.25 370.62v19.88h35.63v-19.88h-10.6v-16.87h-13.93v16.87Z" />
+        <path class="Table9" d="M172.5 370.62v19.88h36.75v-19.88h-10.93v-16.87H184v16.87Z" />
+        <path class="Table10" d="M135.06 411.79V392.1H98.31v19.69h10.93v16.71h14.37v-16.71Z" />
+        <path class="Table11" (click)="onTableSelect(11)" d="M171.31 411.79V392.1h-35.62v19.69h10.59v16.71h13.93v-16.71Z" />
+        <path class="Table12" d="M208.69 411.32v-19.69h-35.63v19.69h10.6V428h13.93v-16.7Z" />
+        <path class="Table13" d="M53 460.41v20.22h37.5v-20.22l-11.15-.05v-17.11H64.68v17.16Z" />
+        <path class="Table14" (click)="onTableSelect(15)" d="M91.08 460.41v20.22h36.5v-20.22l-10.85-.05v-17.11h-14.28v17.16Z" />
+        <path class="Table15" d="M135.25 460.41v20.22h36.5v-20.22l-10.85-.05v-17.11h-14.28v17.16Z" />
+        <path class="Table16" d="M172.63 460.41v20.22h36.5v-20.22l-10.86-.05v-17.11H184v17.16Z" />
+        <path class="Table17" d="M90.25 501.24v-19.62H53.5v19.62h10.93v16.59H78.8V501.2Z" />
+        <path class="Table18" d="M126.5 501.24v-19.62H90.87v19.62h10.6v16.59h13.93V501.2Z" />
+        <path class="Table19" d="M171.56 501.24v-19.62h-36.12v19.62h10.74v16.59h14.13V501.2Z" />
+        <path class="Table20" d="M208.94 501.24v-19.62h-36.13v19.62h10.75v16.59h14.12V501.2Z" />
+        <path class="Table21" d="M141.68 821.25h19.61V785.5h-19.61v10.63H125v14h16.64Z" />
+        <path class="Table22" d="M141.68 784.63h19.61v-36.75h-19.61v10.92H125v14.38h16.64Z" />
+        <path class="Table23" d="M182.57 785.5H163v35.75h19.61v-10.63h16.6v-14h-16.64Z" />
+        <path class="Table24" d="M182.57 747.88H163v36.75h19.61V773.7h16.6v-14.38h-16.64Z" />
+        <path class="Table25" d="M230.93 821.25h19.61v-35.6h-19.61v10.59h-16.6v13.92h16.64Z" />
+        <path class="Table26" d="M230.93 784.79h19.61v-36.16h-19.61v10.75h-16.6v14.14h16.64Z" />
+        <path class="Table27" d="M230.93 748h19.61v-36.13h-19.61v10.75h-16.6v14.14h16.64Z" />
+        <path class="Table28" d="M271.82 785.65h-19.61v35.6h19.61v-10.59h16.6v-13.92h-16.64Z" />
+        <path class="Table29" d="M271.82 748.63h-19.61v36.16h19.61v-10.76h16.6v-14.14h-16.64Z" />
+        <path class="Table30" d="M271.82 711.87h-19.61V748h19.61v-10.75h16.6v-14.12h-16.64Z" />
+        <path class="Table31" d="M365.1 821.4h19.61v-35.6H365.1v10.58h-16.6v13.93h16.64Z" />
+        <path class="Table32" d="M365.1 784h19.61v-35.08H365.1v10.43h-16.6v13.72h16.64Z" />
+        <path class="Table33" d="M365.1 747.37h19.61V712H365.1v10.51h-16.6v13.83h16.64Z" />
+        <path class="Table34" d="M406 785.8h-19.63v35.6H406v-10.59h16.59v-13.92h-16.63Z" />
+        <path class="Table35" d="M406 748.92h-19.63V784H406v-10.43h16.59v-13.72h-16.63Z" />
+        <path class="Table36" d="M406 712h-19.63v35.35H406v-10.52h16.59V723H406Z" />
+        <path class="Table37" d="M474 821.05h19.61v-35.61H474v10.59h-16.6V810H474Z" />
+        <path class="Table38" d="M474 784h19.61v-35.08H474v10.43h-16.6v13.72h16.64Z" />
+        <path class="Table39" d="M474 747.37h19.61v-35.21H474v10.47h-16.6v13.77h16.64Z" />
+        <path class="Table40" d="M514.84 785.44h-19.61v35.61h19.61v-10.59h16.6v-13.92H514.8Z" />
+        <path class="Table41" d="M514.84 748.92h-19.61V784h19.61v-10.43h16.6v-13.72H514.8Z" />
+        <path class="Table42" d="M514.84 712.16h-19.61v35.21h19.61v-10.48h16.6v-13.76H514.8Z" />
+        <path class="Table43" d="M563.62 821.05h19.61v-35.61h-19.61v10.59H547V810h16.64Z" />
+        <path class="Table44" d="M563.62 784h19.61v-35.08h-19.61v10.43H547v13.72h16.64Z" />
+        <path class="Table45" d="M604.51 785.44H584.9v35.61h19.61v-10.59h16.6v-13.92h-16.64Z" />
+        <path class="Table46" d="M604.51 748.92H584.9V784h19.61v-10.43h16.6v-13.72h-16.64Z" />
+    </svg>
+</div>
 
 <br>
 <mat-form-field appearance="fill">

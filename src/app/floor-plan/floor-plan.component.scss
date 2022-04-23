@@ -1,3 +1,32 @@
 .calendar-card {
     width: 250px;
 }
+
+.tables-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tables-container img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.tables-container svg {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: 2;
+    mix-blend-mode: overlay;
+    fill: #606060;
+}
+
+.tables-container path:hover{
+    fill: #000000;
+    cursor: pointer;
+}
+
+// .tables-container path:focus{
+//     fill: #00FF11;
+// }

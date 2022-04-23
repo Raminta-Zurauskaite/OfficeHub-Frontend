@@ -22,7 +22,14 @@ export class FloorPlanComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
+    this.allDesks$ = this.dataService.loadFloorDesks(
+      localStorage.getItem('floor')!
+    );
+
+    var x = document.querySelector('.table-2');
+    x?.setAttribute('style', 'color: red');
+    var x1 = x?.getAttribute('coords');
+    console.log(x1);
   }
 
   onSubmit() {
@@ -42,4 +49,13 @@ export class FloorPlanComponent implements OnInit {
     localStorage.removeItem('booking_date');
     this.router.navigate(['/floor']);
   }
+
+  onTableSelect(tableNumber: number) {
+    if (this.tableNumberMemory)
+      var selectedTable = document.querySelector(`.Table${tableNumber}`);
+    selectedTable?.setAttribute('style', 'fill: #00FF11');
+  }
+
+  tableNumberMemory: number | undefined;
+  tableNumberChange() {}
 }
