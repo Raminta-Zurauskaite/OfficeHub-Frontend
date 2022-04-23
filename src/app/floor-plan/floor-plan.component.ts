@@ -51,11 +51,7 @@ export class FloorPlanComponent implements OnInit {
   }
 
   onTableSelect(tableNumber: number) {
-    if (this.tableNumberMemory)
-      var selectedTable = document.querySelector(`.Table${tableNumber}`);
+    var selectedTable = document.querySelector(`.Table${tableNumber}`);
     selectedTable?.setAttribute('style', 'fill: #00FF11');
   }
-
-  tableNumberMemory: number | undefined;
-  tableNumberChange() {}
 }
