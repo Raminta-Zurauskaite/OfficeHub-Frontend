@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
@@ -11,13 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./floor-plan.component.scss'],
 })
 export class FloorPlanComponent implements OnInit {
-  myThumbnail = 'assets/images/20-floor.png';
-  myFullresImage = 'assets/images/20-floor.png';
   allDesks$: Observable<DeskInterface[]> = of();
   bookedDesks$: Observable<DeskInterface[]> = of();
 
   selectedDate = new Date();
   selectedDesk = new FormControl('', [Validators.required]);
+  location!: Array<string>;
+
+  floor = localStorage.getItem('floor');
+  building = localStorage.getItem('building');
+  city = localStorage.getItem('city');
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -25,11 +28,6 @@ export class FloorPlanComponent implements OnInit {
     this.allDesks$ = this.dataService.loadFloorDesks(
       localStorage.getItem('floor')!
     );
-
-    var x = document.querySelector('.table-2');
-    x?.setAttribute('style', 'color: red');
-    var x1 = x?.getAttribute('coords');
-    console.log(x1);
   }
 
   onSubmit() {
@@ -50,8 +48,13 @@ export class FloorPlanComponent implements OnInit {
     this.router.navigate(['/floor']);
   }
 
+  tableMemory = 0;
   onTableSelect(tableNumber: number) {
-    var selectedTable = document.querySelector(`.Table${tableNumber}`);
-    selectedTable?.setAttribute('style', 'fill: #00FF11');
+    var selected = document.getElementById(`${tableNumber}`);
+    if (this.tableMemory != tableNumber) {
+      selected?.classList.add('on');
+    }
+    document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
+    this.tableMemory = tableNumber;
   }
 }

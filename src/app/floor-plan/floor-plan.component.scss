@@ -1,21 +1,55 @@
-.calendar-card {
-    width: 250px;
+.page-layout{
+    display: flex;
+    justify-content: space-between;
 }
 
-.tables-container {
+.calandar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin:0 0 60px 75px;
+}
+
+.calendar-card {
+    width: 250px;
+    margin-top:10em;
+}
+
+.back-button{
+    background-color: transparent;
+    font-size: 16px;
+}
+
+.mat-icon-style {
+    padding-bottom: 3px;
+}
+
+.booking-info-text{
+    position: relative;
+    margin: auto;
+    top: -64px;
+    background-color: white;
+    border-radius: 0 0 6px 6px;
+    width: 650px;
+    height: 83px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.tables-image {
     position: relative;
     display: inline-block;
 }
 
 .tables-container img{
-    display: block;
+    position: absolute;
     max-width: 100%;
     height: auto;
 }
 
 .tables-container svg {
-    position: absolute;
-    top: 2px;
+    position: relative;
+    top: -19px;
     left: 0;
     z-index: 2;
     mix-blend-mode: overlay;
@@ -27,6 +61,36 @@
     cursor: pointer;
 }
 
-// .tables-container path:focus{
-//     fill: #00FF11;
-// }
+.desk-confirmation-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.desk-confirmation-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font: 24px 'Segoe UI';
+    padding: 60px 33px 16px 33px;
+    border-radius: 6px;
+    height: 353px;
+    width: 385px;
+    background-color: white;
+    margin: 0 30px 30px 0;
+}
+
+.desk-confirmation-container button{
+    font-size: 20px;
+    height: 44px;
+}
+
+.desk-confirmation-container mat-icon {
+    float: right;
+    font-size: 26px;
+    padding-top: 6px;
+}
+
+.on {
+    fill: #00FF11;
+}
