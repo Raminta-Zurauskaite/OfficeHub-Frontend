@@ -1,11 +1,7 @@
 {
-    "root": "dist/",
-    "clean_urls": true,
+    "root": "dist/officehub/",
+    "https_only": true,
     "routes": {
-        "/*.js": "/",
-        "/*.css": "/",
-        "/*.map": "/",
-        "/*.ico": "/",
         "/**": "index.html"
     }
 }
