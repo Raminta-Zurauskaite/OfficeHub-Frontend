@@ -15,12 +15,11 @@ export class FloorPlanComponent implements OnInit {
   bookedDesks$: Observable<DeskInterface[]> = of();
 
   selectedDate = new Date();
-  selectedDesk = new FormControl('', [Validators.required]);
   location!: Array<string>;
 
-  floor = localStorage.getItem('floor');
-  building = localStorage.getItem('building');
-  city = localStorage.getItem('city');
+  floor = localStorage.getItem('floorNumber');
+  building = localStorage.getItem('buildingName');
+  city = localStorage.getItem('cityName');
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -28,6 +27,7 @@ export class FloorPlanComponent implements OnInit {
     this.allDesks$ = this.dataService.loadFloorDesks(
       localStorage.getItem('floor')!
     );
+    this.onTableSelect(1);
   }
 
   onSubmit() {
@@ -36,7 +36,7 @@ export class FloorPlanComponent implements OnInit {
       localStorage.getItem('city')!,
       localStorage.getItem('building')!,
       localStorage.getItem('floor')!,
-      this.selectedDesk.value,
+      localStorage.getItem('deskId')!,
       this.selectedDate.toISOString().slice(0, 10)
     );
     this.router.navigate(['/bookings']);
@@ -53,8 +53,10 @@ export class FloorPlanComponent implements OnInit {
     var selected = document.getElementById(`${tableNumber}`);
     if (this.tableMemory != tableNumber) {
       selected?.classList.add('on');
+      document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
+      this.tableMemory = tableNumber;
     }
-    document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
-    this.tableMemory = tableNumber;
+    localStorage.setItem('deskId', tableNumber.toString());
+    // localStorage.setItem('date', this.selectedDate.toISOString().slice(0, 10));
   }
 }

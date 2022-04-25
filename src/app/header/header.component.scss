@@ -2,6 +2,8 @@
 .navigation {
   display: flex;
   justify-content: space-between;
+  margin-top: 35px; 
+  padding: 0 50px 0 50px;
   }
 
   .toolbarColor{
@@ -24,8 +26,10 @@
     }
   }
 
-  .navigation a {
-    display: block;
+.navigation button {
+  display: block;
+  font: 16px 'Roboto';
+  height: 25px;
 }
 
 .headerButtonAligment{
@@ -38,6 +42,7 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  margin-left: 25px;
 }
 
 .roundedImage:hover{
