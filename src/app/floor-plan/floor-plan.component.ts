@@ -4,6 +4,7 @@ import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { CoordinatesInterface } from 'src/assets/data/COORDINATES';
 
 @Component({
   selector: 'app-floor-plan',
@@ -13,11 +14,12 @@ import { Router } from '@angular/router';
 export class FloorPlanComponent implements OnInit {
   allDesks$: Observable<DeskInterface[]> = of();
   bookedDesks$: Observable<DeskInterface[]> = of();
+  svgDesks$: Observable<CoordinatesInterface[]> = of();
 
   selectedDate = new Date();
   location!: Array<string>;
 
-  floor = localStorage.getItem('floorNumber');
+  floor = localStorage.getItem('floorName');
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
 
@@ -27,6 +29,9 @@ export class FloorPlanComponent implements OnInit {
     this.allDesks$ = this.dataService.loadFloorDesks(
       localStorage.getItem('floor')!
     );
+
+    this.svgDesks$ = this.dataService.loadCoords();
+
     this.onTableSelect(1);
   }
 
@@ -57,6 +62,10 @@ export class FloorPlanComponent implements OnInit {
       this.tableMemory = tableNumber;
     }
     localStorage.setItem('deskId', tableNumber.toString());
-    // localStorage.setItem('date', this.selectedDate.toISOString().slice(0, 10));
+  }
+
+  onDateChange() {
+    this.selectedDate;
+    localStorage.setItem('date', this.selectedDate.toISOString().slice(0, 10));
   }
 }

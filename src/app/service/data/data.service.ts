@@ -7,6 +7,7 @@ import { BuildingInterface } from 'src/assets/data/Building';
 import { FloorInterface } from 'src/assets/data/Floor';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { BookingsInterface } from 'src/assets/data/Bookings';
+import { CoordinatesInterface } from 'src/assets/data/COORDINATES';
 
 @Injectable({
   providedIn: 'root',
@@ -65,5 +66,11 @@ export class DataService {
       deskID: deskID,
       bookingDate: bookingDate,
     });
+  }
+
+  loadCoords(): Observable<CoordinatesInterface[]> {
+    return this.http.get<CoordinatesInterface[]>(
+      '././assets/data/COORDINATES.json'
+    );
   }
 }

@@ -18,9 +18,10 @@ export class CityListComponent implements OnInit {
     this.cities$ = this.dataService.loadCities();
   }
 
-  onCitySelectClick(value: number) {
+  onCitySelectClick(value: number, name: string) {
     this.router.navigate(['/building']);
     localStorage.setItem('city', value.toString());
+    localStorage.setItem('cityName', name);
   }
 
   onBackButtonClick() {
