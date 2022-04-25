@@ -10,12 +10,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   isLoggedIn() {
-    const idToken = localStorage.getItem('user');
-    if (idToken) {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
       return true;
     }
     else {

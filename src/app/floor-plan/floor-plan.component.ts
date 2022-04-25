@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
-import { Observable, of } from 'rxjs';
+import {finalize, Observable, of} from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,15 +26,15 @@ export class FloorPlanComponent implements OnInit {
   }
 
   onSubmit() {
+    var localDate =  new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
     this.dataService.createBooking(
       localStorage.getItem('user')!,
       localStorage.getItem('city')!,
       localStorage.getItem('building')!,
       localStorage.getItem('floor')!,
       this.selectedDesk.value,
-      this.selectedDate.toISOString().slice(0, 10)
+      localDate.toISOString().slice(0, 10)
     );
-    localStorage.removeItem('floor');
     localStorage.removeItem('deskId');
     localStorage.removeItem('booking_date');
     localStorage.removeItem('city');

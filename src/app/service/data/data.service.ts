@@ -43,8 +43,8 @@ export class DataService {
     return this.http.get<BookingsInterface[]>(this.ipAddress + 'booking/' + userID);
   }
 
-  createBooking(userID: String, cityID: String, buildingID: String, floorID: String, deskID: String, bookingDate: String){
-    this.http.post(this.ipAddress + 'booking/',
+  createBooking(userID: String, cityID: String, buildingID: String, floorID: String, deskID: String, bookingDate: String): Observable<any> {
+    return this.http.post(this.ipAddress + 'booking/',
       {
         userID: userID,
         cityID: cityID,
@@ -52,6 +52,10 @@ export class DataService {
         floorID: floorID,
         deskID: deskID,
         bookingDate: bookingDate});
+  }
+
+  cancelBooking(bookingID: String): Observable<any> {
+    return this.http.delete(this.ipAddress + 'booking/' + bookingID);
   }
 
 }

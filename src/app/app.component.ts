@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {DataService} from "./service/data/data.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'officehub';
 
-  ngOnInit(): void {
-    localStorage.clear();
-  }
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {}
+
+
 }
