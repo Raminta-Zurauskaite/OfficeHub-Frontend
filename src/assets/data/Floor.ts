@@ -1,4 +1,5 @@
 export interface FloorInterface {
-    id: number;
-    floorNumber: string;
+    floorID: number;
+    buildingID: number;
+    floorName: string;
 }

@@ -1,7 +1,7 @@
 <div>
     <h4>Choose an account</h4>
     <div *ngFor="let user of users$ | async">
-        <button (click)="onUserSelectClick(user.id)">
+        <button (click)="onUserSelectClick(user.userID)">
             {{user.name}}
             {{user.surname}} <br>
             {{user.email}}

@@ -1,10 +1,13 @@
 <div>
     <h4>Choose your building</h4>
     <div *ngFor="let building of buildings$ | async">
-        <button (click)="onBuildingSelectClick(building.id)">
-            {{building.name}}<br>
+        <button (click)="onBuildingSelectClick(building.buildingID, building.buildingName)">
+            {{building.buildingName}}<br>
             {{building.address}}
         </button>
     </div>
-    <button (click)="onBackButtonClick()">Back</button>
+    <button mat-button (click)="onBackButtonClick()">
+        <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
+        Back
+    </button>
 </div>

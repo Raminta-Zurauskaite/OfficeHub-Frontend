@@ -1,22 +1,43 @@
-<br>
-<mat-card class="calendar-card">
-    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
-</mat-card>
+<div class="page-layout">
+    
+    <div class="calandar">
+        <div class="calendar-card-container">
+            <mat-card class="calendar-card">
+                <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateChange()"></mat-calendar>
+            </mat-card>
+        </div>
+        <div>
+            <button class="back-button" mat-flat-button (click)="onBackButtonClick()">
+                <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon> 
+                Back
+            </button>
+        </div>
+    </div>
 
-<img src="assets/images/20-floor.png" alt="Floor layout">
+    <div class="tables-container">
+        <div class="tables-image">
+            <div class="booking-info-text">
+                <p style="font: 24px 'Segoe UI';">Choose the desk you would like to book</p>
+                <p>{{floor}}, {{building}}, {{city}}</p>
+            </div>
+            <img src="assets/images/floor_plan.png" alt="Floor layout">
+            <svg id="tables-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 1060">
+                <path *ngFor="let desk of svgDesks$ | async" id="{{desk.id}}" (click)="onTableSelect(desk.id)" [attr.d]=desk.coords />
+            </svg>
+        </div>
+    </div>
 
-<br>
-<mat-form-field appearance="fill">
-    <mat-label>Select workspace</mat-label>
-    <mat-select [formControl]="selectedDesk" required>
-        <mat-option *ngFor="let desk of desks$ | async" [value]="desk.id">{{desk.id}}
-        </mat-option>
-    </mat-select>
-    <mat-error *ngIf="selectedDesk.hasError('required')">Please choose an animal</mat-error>
-</mat-form-field>
-<br>
-<button mat-raised-button type="submit" (click)="onSubmit()" [disabled]="selectedDesk.invalid">Confirm
-    booking</button>
-
-<br>
-<button mat-raised-button (click)="onBackButtonClick()">Back</button>
+    <div class="desk-confirmation-column">
+        <div class="desk-confirmation-container">
+            <div class="text">
+                <p>You have selected desk {{tableMemory}} for {{selectedDate| date:'MMMM d'}}</p>
+            </div>
+            <button mat-flat-button type="submit" (click)="onSubmit()">
+                Confirm booking
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </div>
+    </div>
+    
+    
+</div>

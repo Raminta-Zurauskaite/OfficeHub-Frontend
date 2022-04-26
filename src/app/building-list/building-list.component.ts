@@ -15,12 +15,15 @@ export class BuildingListComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.buildings$ = this.dataService.loadBuildings();
+    this.buildings$ = this.dataService.loadBuildings(
+      localStorage.getItem('city')!
+    );
   }
 
-  onBuildingSelectClick(value: number) {
+  onBuildingSelectClick(value: number, name: string) {
     this.router.navigate(['/floor']);
     localStorage.setItem('building', value.toString());
+    localStorage.setItem('buildingName', name);
   }
 
   onBackButtonClick() {

@@ -4,15 +4,15 @@
             <ng-container *ngIf="bookings.length; else noBookings">
                 <mat-selection-list #bookingsList [multiple]="false">
                     <h4>List of your existing bookings:</h4>
-                    <mat-list-option *ngFor="let booking of bookings" [value]="booking.id"
-                        (click)="onSelectedBookingClick(booking.date)">
-                        {{booking.desk_id}}, {{booking.date}}
-                        {{booking.building_name}}, {{booking.floor}}
+                    <mat-list-option *ngFor="let booking of bookings" [value]="booking.booking_id"
+                        (click)="onSelectedBookingClick(booking.booking_date, booking.booking_id)">
+                        {{booking.desk_number}}, {{booking.booking_date}}
+                        {{booking.building_name}}, {{booking.floor_name}}
                     </mat-list-option>
                     <div class="buttonAligment">
                         <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
-                        
-                        <button mat-raised-button *ngIf="!isDisabled">Cancel booking</button>
+
+                        <button mat-raised-button *ngIf="!isDisabled" (click)="onCancelBookingClick()">Cancel booking</button>
                     </div>
                 </mat-selection-list>
             </ng-container>
@@ -22,13 +22,13 @@
         <ng-container *ngIf="bookings$ | async as bookings">
             <ng-container *ngIf="bookings.length; else noBookings">
                 <div class="booking-info-container" *ngIf="!isDisabled">
-                    <div class="booking-info-child calendar">
+                    <div class="calendar">
                         <mat-card class="calendar-card">
                             <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
                         </mat-card>
                     </div>
-                    <div class="booking-info-child img">
-                        <img src="assets/images/20-floor.png" alt="Floor layout">
+                    <div class="image">
+                        <img src="assets/images/floor_plan.png" alt="Floor layout">
                     </div>
                 </div>
             </ng-container>

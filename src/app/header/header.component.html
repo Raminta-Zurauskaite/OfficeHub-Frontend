@@ -1,0 +1,11 @@
+<mat-toolbar class="toolbarColor">
+    <mat-toolbar-row class="navigation">
+        <img src="assets/images/logo.png" alt="Office hub logo">
+        <div class="headerButtonAligment" *ngIf="isLoggedIn()">
+            <button mat-flat-button  (click)="onBackButtonClick()" >Log out</button>
+            <div  [routerLink]="'/bookings'">
+                <img class="roundedImage" src="assets/images/User_icon.jpg" alt="User avatar icon picture" >
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
