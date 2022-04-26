@@ -22,7 +22,9 @@ export class BookingsComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.bookings$ = this.dataService.loadBookings(localStorage.getItem('user')!);
+    this.bookings$ = this.dataService.loadBookings(
+      localStorage.getItem('user')!
+    );
   }
 
   onClickStartBooking() {
@@ -34,7 +36,6 @@ export class BookingsComponent implements OnInit {
     this.selectedDate = new Date(bookingDate);
     this.calendar._goToDateInView(this.selectedDate, 'month');
     this.selectedBookingId = bookingId;
-    console.log(this.selectedBookingId);
   }
 
   onCancelBookingClick() {
