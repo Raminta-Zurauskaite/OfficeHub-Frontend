@@ -4,7 +4,7 @@ import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { CoordinatesInterface } from 'src/assets/data/COORDINATES';
+import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
 @Component({
   selector: 'app-floor-plan',
@@ -42,7 +42,7 @@ export class FloorPlanComponent implements OnInit {
       localStorage.getItem('building')!,
       localStorage.getItem('floor')!,
       localStorage.getItem('deskId')!,
-      this.selectedDate.toISOString().slice(0, 10)
+      localStorage.getItem('date')!
     );
     this.router.navigate(['/bookings']);
   }
@@ -65,7 +65,10 @@ export class FloorPlanComponent implements OnInit {
   }
 
   onDateChange() {
-    this.selectedDate;
-    localStorage.setItem('date', this.selectedDate.toISOString().slice(0, 10));
+    var localDate = new Date(
+      this.selectedDate.getTime() -
+        this.selectedDate.getTimezoneOffset() * 60000
+    );
+    localStorage.setItem('date', localDate.toISOString().slice(0, 10));
   }
 }

@@ -7,7 +7,7 @@ import { BuildingInterface } from 'src/assets/data/Building';
 import { FloorInterface } from 'src/assets/data/Floor';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { BookingsInterface } from 'src/assets/data/Bookings';
-import { CoordinatesInterface } from 'src/assets/data/COORDINATES';
+import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
 @Injectable({
   providedIn: 'root',
