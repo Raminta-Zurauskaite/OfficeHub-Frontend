@@ -13,8 +13,7 @@ import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 })
 export class FloorPlanComponent implements OnInit {
   allDesks$: Observable<DeskInterface[]> = of();
-  bookedDesks$: Observable<DeskInterface[]> = of();
-  svgDesks$: Observable<CoordinatesInterface[]> = of();
+  bookedDesks$: Observable<number[]> = of();
 
   selectedDate = new Date();
   location!: Array<string>;
@@ -26,13 +25,9 @@ export class FloorPlanComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this.allDesks$ = this.dataService.loadFloorDesks(
-      localStorage.getItem('floor')!
-    );
-
-    this.svgDesks$ = this.dataService.loadCoords();
-
-    this.onTableSelect(1);
+    this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
+    var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10)).subscribe(res => console.log(res));
   }
 
   onSubmit() {
