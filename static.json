@@ -1,0 +1,6 @@
+{
+    "root": "dist/officehub/",
+    "routes": {
+        "/**": "index.html"
+    }
+}
