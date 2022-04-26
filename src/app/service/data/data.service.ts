@@ -7,6 +7,7 @@ import { BuildingInterface } from 'src/assets/data/Building';
 import { FloorInterface } from 'src/assets/data/Floor';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { BookingsInterface } from 'src/assets/data/Bookings';
+import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
 @Injectable({
   providedIn: 'root',
@@ -28,11 +29,15 @@ export class DataService {
   }
 
   loadBuildings(cityID: String): Observable<BuildingInterface[]> {
-    return this.http.get<BuildingInterface[]>(this.ipAddress + 'building/' + cityID);
+    return this.http.get<BuildingInterface[]>(
+      this.ipAddress + 'building/' + cityID
+    );
   }
 
   loadFloors(buildingID: String): Observable<FloorInterface[]> {
-    return this.http.get<FloorInterface[]>(this.ipAddress + 'floor/' + buildingID);
+    return this.http.get<FloorInterface[]>(
+      this.ipAddress + 'floor/' + buildingID
+    );
   }
 
   loadFloorDesks(floorID: String): Observable<DeskInterface[]> {
@@ -40,11 +45,13 @@ export class DataService {
   }
 
   loadBookings(userID: String): Observable<BookingsInterface[]> {
-    return this.http.get<BookingsInterface[]>(this.ipAddress + 'booking/' + userID);
+    return this.http.get<BookingsInterface[]>(
+      this.ipAddress + 'booking/' + userID
+    );
   }
 
-  createBooking(userID: String, cityID: String, buildingID: String, floorID: String, deskID: String, bookingDate: String) {
-    this.http.post(this.ipAddress + 'booking/',
+  createBooking(userID: String, cityID: String, buildingID: String, floorID: String, deskID: String, bookingDate: String): Observable<any> {
+    return this.http.post(this.ipAddress + 'booking/',
       {
         userID: userID,
         cityID: cityID,
@@ -55,4 +62,14 @@ export class DataService {
       });
   }
 
+  loadCoords(): Observable<CoordinatesInterface[]> {
+    return this.http.get<CoordinatesInterface[]>(
+      '././assets/data/COORDINATES.json'
+    );
+  }
+
+
+  cancelBooking(bookingID: String): Observable<any> {
+    return this.http.delete(this.ipAddress + 'booking/' + bookingID);
+  }
 }

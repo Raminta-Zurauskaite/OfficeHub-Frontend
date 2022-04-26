@@ -1,3 +1,103 @@
+.page-layout{
+    display: flex;
+    justify-content: space-between;
+}
+
+.on {
+    fill: #00FF11;
+}
+
+.calandar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin:0 0 60px 75px;
+}
+
 .calendar-card {
     width: 250px;
+    margin-top:10em;
 }
+
+.back-button{
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.mat-icon-style {
+    padding-bottom: 3px;
+}
+
+.booking-info-text{
+    position: relative;
+    margin: auto;
+    top: -20px;
+    background-color: white;
+    border-radius: 0 0 6px 6px;
+    width: 650px;
+    height: 83px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.tables-container{
+    height: 900px;
+}
+.tables-image {
+    position: relative;
+    display: inline-block;
+    top: -79px;
+}
+
+.tables-container img{
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+}
+
+.tables-container svg {
+    position: relative;
+    top: -19px;
+    left: 0;
+    z-index: 2;
+    mix-blend-mode: overlay;
+    fill: #606060;
+}
+
+.tables-container path:hover{
+    fill: #00FF11;
+    cursor: pointer;
+}
+
+.desk-confirmation-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.desk-confirmation-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font: 24px 'Segoe UI';
+    padding: 80px 33px 16px 33px;
+    border-radius: 6px;
+    height: 353px;
+    width: 385px;
+    background-color: white;
+    margin: 0 30px 30px 0;
+}
+
+.desk-confirmation-container button{
+    font-size: 20px;
+    height: 44px;
+    background-color: #E9E9E9;
+}
+
+.desk-confirmation-container mat-icon {
+    float: right;
+    font-size: 26px;
+    padding-top: 6px;
+}
+
