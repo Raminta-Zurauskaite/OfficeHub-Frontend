@@ -55,14 +55,14 @@ export class FloorPlanComponent implements OnInit {
   }
 
   tableMemory = 0;
-  onTableSelect(tableNumber: number) {
+  onTableSelect(tableNumber: number, tableID: number) {
     var selected = document.getElementById(`${tableNumber}`);
     if (this.tableMemory != tableNumber) {
       selected?.classList.add('on');
       document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
       this.tableMemory = tableNumber;
     }
-    localStorage.setItem('deskId', tableNumber.toString());
+    localStorage.setItem('deskId', tableID.toString());
   }
 
   onDateChange() {
