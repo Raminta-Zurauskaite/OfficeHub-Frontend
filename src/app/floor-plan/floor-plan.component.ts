@@ -34,7 +34,7 @@ export class FloorPlanComponent implements OnInit {
       localStorage.getItem('floor')!,
       this.selectedDesk.value,
       localDate.toISOString().slice(0, 10)
-    );
+    ).subscribe();
     localStorage.removeItem('deskId');
     localStorage.removeItem('booking_date');
     localStorage.removeItem('city');

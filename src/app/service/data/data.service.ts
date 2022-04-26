@@ -17,7 +17,7 @@ export class DataService {
   }
   constructor(private http: HttpClient) {}
 
-  private ipAddress = 'http://localhost:8080/';
+  private ipAddress = 'https://officehubbackend.herokuapp.com/';
 
   loadUsers(): Observable<UserInterface[]>{
     return this.http.get<UserInterface[]>(this.ipAddress + 'user');
