@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
-import { Observable, of, filter } from 'rxjs';
+import {Observable, of, filter, finalize} from 'rxjs';
 import { BookingsInterface } from 'src/assets/data/Bookings';
 import { DataService } from '../service/data/data.service';
 
@@ -39,6 +39,8 @@ export class BookingsComponent implements OnInit {
   }
 
   onCancelBookingClick() {
-    console.log(this.selectedBookingId);
+    this.dataService.cancelBooking(this.selectedBookingId.toString()).pipe(finalize(() =>
+      {this.bookings$ = this.dataService.loadBookings(localStorage.getItem('user')!)})).subscribe();
   }
+
 }

@@ -10,12 +10,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   isLoggedIn() {
-    const idToken = localStorage.getItem('user');
-    if (idToken) {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
       return true;
     }
     else {
@@ -26,5 +25,14 @@ export class HeaderComponent implements OnInit {
   onBackButtonClick() {
     localStorage.clear();
     this.router.navigate(['/']);
+  }
+
+  onUserButtonClick() {
+    localStorage.removeItem('floor');
+    localStorage.removeItem('deskId');
+    localStorage.removeItem('booking_date');
+    localStorage.removeItem('city');
+    localStorage.removeItem('building');
+    this.router.navigate(['/bookings']);
   }
 }
