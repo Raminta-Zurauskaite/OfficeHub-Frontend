@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
-import { Observable, of } from 'rxjs';
+import {finalize, Observable, of} from 'rxjs';
 import { Router } from '@angular/router';
 import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
@@ -23,7 +23,7 @@ export class FloorPlanComponent implements OnInit {
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(
@@ -36,6 +36,7 @@ export class FloorPlanComponent implements OnInit {
   }
 
   onSubmit() {
+    var localDate =  new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
     this.dataService.createBooking(
       localStorage.getItem('user')!,
       localStorage.getItem('city')!,
@@ -43,11 +44,16 @@ export class FloorPlanComponent implements OnInit {
       localStorage.getItem('floor')!,
       localStorage.getItem('deskId')!,
       localStorage.getItem('date')!
-    );
+    ).subscribe();
+    localStorage.removeItem('deskId');
+    localStorage.removeItem('booking_date');
+    localStorage.removeItem('city');
+    localStorage.removeItem('building');
     this.router.navigate(['/bookings']);
   }
 
   onBackButtonClick() {
+    localStorage.removeItem('floor');
     localStorage.removeItem('deskId');
     localStorage.removeItem('booking_date');
     this.router.navigate(['/floor']);

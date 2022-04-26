@@ -73,4 +73,9 @@ export class DataService {
       '././assets/data/COORDINATES.json'
     );
   }
+
+
+  cancelBooking(bookingID: String): Observable<any> {
+    return this.http.delete(this.ipAddress + 'booking/' + bookingID);
+  }
 }
