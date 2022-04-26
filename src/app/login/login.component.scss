@@ -1,9 +1,9 @@
 .container{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .middle-container{
+    align-self:center;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -16,7 +16,7 @@
 }
 
 .middle-container>div:first-of-type{
-    height: 168px;
+    height: 123px;
 }
 
 h1{

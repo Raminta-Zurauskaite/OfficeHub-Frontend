@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
-import {finalize, Observable, of} from 'rxjs';
+import { finalize, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
@@ -23,7 +23,7 @@ export class FloorPlanComponent implements OnInit {
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(
@@ -36,19 +36,24 @@ export class FloorPlanComponent implements OnInit {
   }
 
   onSubmit() {
-    var localDate =  new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
-    this.dataService.createBooking(
-      localStorage.getItem('user')!,
-      localStorage.getItem('city')!,
-      localStorage.getItem('building')!,
-      localStorage.getItem('floor')!,
-      localStorage.getItem('deskId')!,
-      localStorage.getItem('date')!
-    ).subscribe();
-    localStorage.removeItem('deskId');
-    localStorage.removeItem('booking_date');
+    var localDate = new Date(
+      this.selectedDate.getTime() -
+        this.selectedDate.getTimezoneOffset() * 60000
+    );
+    this.dataService
+      .createBooking(
+        localStorage.getItem('user')!,
+        localStorage.getItem('city')!,
+        localStorage.getItem('building')!,
+        localStorage.getItem('floor')!,
+        localStorage.getItem('deskId')!,
+        localStorage.getItem('booking_date')!
+      )
+      .subscribe();
     localStorage.removeItem('city');
     localStorage.removeItem('building');
+    localStorage.removeItem('booking_date');
+    localStorage.removeItem('deskId');
     this.router.navigate(['/bookings']);
   }
 
@@ -75,6 +80,6 @@ export class FloorPlanComponent implements OnInit {
       this.selectedDate.getTime() -
         this.selectedDate.getTimezoneOffset() * 60000
     );
-    localStorage.setItem('date', localDate.toISOString().slice(0, 10));
+    localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
 }

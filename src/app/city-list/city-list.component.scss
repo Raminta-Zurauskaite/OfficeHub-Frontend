@@ -7,21 +7,24 @@
 .middle-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.9);
     width: 650px;
     height: 620px;
     border-radius: 6px;
-    padding-top: 45px;
+    padding: 45px 60px 57px 60px;
 }
 
-.middle-container>div:first-of-type {
-    height: 168px;
+.middle-container>div:nth-of-type(1) {
+    height: 123px;
 }
 
 h1 {
     font: 24px 'Segoe UI';
+}
+
+.middle-container>div:nth-of-type(2){
+    height: 315px;
 }
 
 .button-select {
@@ -37,7 +40,7 @@ h1 {
     font-family: 'Roboto';
 }
 
-button:hover {
+.button-select:hover {
     background-color: rgba(0, 0, 0, .15);
     cursor: pointer;
 }
@@ -71,6 +74,18 @@ p:first-of-type {
 p:last-of-type {
     font-size: 14px;
     color: #00000099;
+}
+
+.back-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-grow: 1;
+}
+
+.back-button>button{
+    height: 40px;
 }
 
 

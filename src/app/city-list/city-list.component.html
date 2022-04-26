@@ -6,23 +6,22 @@
         <div>
             <button class="button-select" *ngFor="let city of cities$ | async" (click)="onCitySelectClick(city.cityID, city.city_name)">
                 <ng-container *ngIf="city.cityID==1">
-                    <img src="assets/images/Vilnius.png" alt="User_icon">
+                    <img src="assets/images/Vilnius.png" alt="Vilnius city icon">
                 </ng-container>
                 <ng-container *ngIf="city.cityID==2">
-                    <img src="assets/images/Stockholm.png" alt="User_icon">
+                    <img src="assets/images/Stockholm.png" alt="Stockholm city icon">
                 </ng-container>
                 <ng-container *ngIf="city.cityID==3">
-                    <img src="assets/images/Honolulu.png" alt="User_icon">
+                    <img src="assets/images/Honolulu.png" alt="Honolulu city icon">
                 </ng-container>
                 <div>
                     <p>{{city.city_name}}</p>
                     <p>{{city.country}}</p>
                 </div>
                 <mat-icon>keyboard_arrow_right</mat-icon>
-
             </button>
         </div>
-        <div>
+        <div class="back-button">
         <button mat-button (click)="onBackButtonClick()">
             <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
             Back
