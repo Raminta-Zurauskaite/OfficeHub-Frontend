@@ -14,7 +14,7 @@ export class FloorPlanComponent implements OnInit {
   myThumbnail = 'assets/images/20-floor.png';
   myFullresImage = 'assets/images/20-floor.png';
   allDesks$: Observable<DeskInterface[]> = of();
-  bookedDesks$: Observable<DeskInterface[]> = of();
+  bookedDesks$: Observable<number[]> = of();
 
   selectedDate = new Date();
   selectedDesk = new FormControl('', [Validators.required]);
@@ -23,6 +23,8 @@ export class FloorPlanComponent implements OnInit {
 
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
+    var localDate =  new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10)).subscribe(res => console.log(res));
   }
 
   onSubmit() {
