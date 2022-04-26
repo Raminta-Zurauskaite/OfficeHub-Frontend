@@ -16,7 +16,7 @@ export class DataService {
   getBooking(arg0: number): Observable<BookingsInterface[]> {
     throw new Error('Method not implemented.');
   }
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private ipAddress = 'https://officehubbackend.herokuapp.com/';
 
@@ -50,22 +50,16 @@ export class DataService {
     );
   }
 
-  createBooking(
-    userID: String,
-    cityID: String,
-    buildingID: String,
-    floorID: String,
-    deskID: String,
-    bookingDate: String
-  ) {
-    this.http.post(this.ipAddress + 'booking/', {
-      userID: userID,
-      cityID: cityID,
-      buildingID: buildingID,
-      floorID: floorID,
-      deskID: deskID,
-      bookingDate: bookingDate,
-    });
+  createBooking(userID: String, cityID: String, buildingID: String, floorID: String, deskID: String, bookingDate: String): Observable<any> {
+    return this.http.post(this.ipAddress + 'booking/',
+      {
+        userID: userID,
+        cityID: cityID,
+        buildingID: buildingID,
+        floorID: floorID,
+        deskID: deskID,
+        bookingDate: bookingDate
+      });
   }
 
   loadCoords(): Observable<CoordinatesInterface[]> {
