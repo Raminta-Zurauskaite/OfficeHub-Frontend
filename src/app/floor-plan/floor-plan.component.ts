@@ -94,8 +94,8 @@ export class FloorPlanComponent implements OnInit {
         document.getElementById(`${this.tableMemory}`)?.classList.remove('booked');
       }
     }*/
-
-    console.log(this.bookedDeskNumber);
+    this.bookedDesks$.pipe(tap(res => { this.regularBookedDesks = res }));
+    console.log(this.regularBookedDesks);
 
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
