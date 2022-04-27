@@ -24,7 +24,8 @@ h1 {
 }
 
 .middle-container>div:nth-of-type(2){
-    height: 315px;
+    flex-grow: 1;
+    padding-bottom: 45px;
 }
 
 .button-select {
@@ -75,17 +76,3 @@ p:last-of-type {
     font-size: 14px;
     color: #00000099;
 }
-
-.back-button{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-grow: 1;
-}
-
-.back-button>button{
-    height: 40px;
-}
-
-
