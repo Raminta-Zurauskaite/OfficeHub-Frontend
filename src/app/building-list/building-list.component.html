@@ -1,13 +1,33 @@
-<div>
-    <h4>Choose your building</h4>
-    <div *ngFor="let building of buildings$ | async">
-        <button (click)="onBuildingSelectClick(building.buildingID, building.buildingName)">
-            {{building.buildingName}}<br>
-            {{building.address}}
-        </button>
+<div class="container">
+    <div class="middle-container">
+        <div>
+            <h1>Choose your building</h1>
+            <h6>in {{cityName}}</h6>
+        </div>
+        <div>
+            <button class="button-select" *ngFor="let building of buildings$ | async"
+                (click)="onBuildingSelectClick(building.buildingID, building.buildingName)">
+                <!-- <ng-container *ngIf="building.buildingID==1">
+                    <img src="assets/images/Vilnius.png" alt=" city icon">
+                </ng-container>
+                <ng-container *ngIf="building.buildingID==2">
+                    <img src="assets/images/Stockholm.png" alt=" city icon">
+                </ng-container>
+                <ng-container *ngIf="building.buildingID==3">
+                    <img src="assets/images/Honolulu.png" alt=" city icon">
+                </ng-container> -->
+                <div>
+                    <p>{{building.buildingName}}</p>
+                    <p>{{building.address}}</p>
+                </div>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </div>
+        <div class="bottom-navigation">
+            <button mat-button (click)="onBackButtonClick()">
+                <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
+                Back
+            </button>
+        </div>
     </div>
-    <button mat-button (click)="onBackButtonClick()">
-        <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
-        Back
-    </button>
 </div>
