@@ -15,12 +15,17 @@
     padding-top: 45px;
 }
 
-.middle-container>div:first-of-type{
+.container-header{
     height: 123px;
 }
 
 h1{
     font: 24px 'Segoe UI';
+}
+
+.button-list-container {
+    overflow: auto;
+    height: 315px;
 }
 
 button{
@@ -51,25 +56,27 @@ button:last-of-type{
     font-size: 16px;
 }
 
-button>div{
+.button-text{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-p{
+span{
     text-align: left;
     padding-left: 16px;
     margin-bottom: 0%;
     font-family: 'Roboto';
 }
 
-p:first-of-type{
+span:first-of-type{
     font-size: 20px;
     font-weight: 500;
+    color: #000000;
+    padding-bottom: 3px;
 }
 
-p:last-of-type{
+span:last-of-type{
     font-size: 14px;
     color: #00000099;
 }

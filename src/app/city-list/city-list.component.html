@@ -1,9 +1,9 @@
 <div class="container">
     <div class="middle-container">
-        <div>
+        <div class="container-header">
             <h1>Choose your city</h1>
         </div>
-        <div>
+        <div class="button-list-container">
             <button class="button-select" *ngFor="let city of cities$ | async" (click)="onCitySelectClick(city.cityID, city.city_name)">
                 <ng-container *ngIf="city.cityID==1">
                     <img src="assets/images/Vilnius.png" alt="Vilnius city icon">
@@ -14,10 +14,10 @@
                 <ng-container *ngIf="city.cityID==3">
                     <img src="assets/images/Honolulu.png" alt="Honolulu city icon">
                 </ng-container>
-                <div>
-                    <p>{{city.city_name}}</p>
-                    <p>{{city.country}}</p>
-                </div>
+                <span class="button-text">
+                    <span>{{city.city_name}}</span>
+                    <span>{{city.country}}</span>
+                </span>
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
         </div>

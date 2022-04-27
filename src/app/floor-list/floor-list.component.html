@@ -1,15 +1,13 @@
 <div class="container">
     <div class="middle-container">
-        <div>
+        <div class="container-header">
             <h1>Choose your building</h1>
             <h6>in {{building}}, {{cityName}}</h6>
         </div>
-        <div>
+        <div class="button-list-container">
             <button class="button-select" *ngFor="let floor of floors$ | async"
                 (click)="onBuildingSelectClick(floor.floorID, floor.floorName)">
-                <div>
-                    <p>{{floor.floorName}}</p>
-                </div>
+                <span>{{floor.floorName}}</span>
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
         </div>

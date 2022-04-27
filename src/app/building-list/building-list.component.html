@@ -1,25 +1,16 @@
 <div class="container">
     <div class="middle-container">
-        <div>
+        <div class="container-header">
             <h1>Choose your building</h1>
             <h6>in {{cityName}}</h6>
         </div>
-        <div>
+        <div class="button-list-container">
             <button class="button-select" *ngFor="let building of buildings$ | async"
                 (click)="onBuildingSelectClick(building.buildingID, building.buildingName)">
-                <!-- <ng-container *ngIf="building.buildingID==1">
-                    <img src="assets/images/Vilnius.png" alt=" city icon">
-                </ng-container>
-                <ng-container *ngIf="building.buildingID==2">
-                    <img src="assets/images/Stockholm.png" alt=" city icon">
-                </ng-container>
-                <ng-container *ngIf="building.buildingID==3">
-                    <img src="assets/images/Honolulu.png" alt=" city icon">
-                </ng-container> -->
-                <div>
-                    <p>{{building.buildingName}}</p>
-                    <p>{{building.address}}</p>
-                </div>
+                <span class="button-text">
+                    <span>{{building.buildingName}}</span>
+                    <span>{{building.address}}</span>
+                </span>
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
         </div>
