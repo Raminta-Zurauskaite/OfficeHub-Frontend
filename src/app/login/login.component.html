@@ -1,11 +1,28 @@
-<div>
-    <h4>Choose an account</h4>
-    <div *ngFor="let user of users$ | async">
-        <button (click)="onUserSelectClick(user.userID)">
-            {{user.name}}
-            {{user.surname}} <br>
-            {{user.email}}
-        </button>
+<div class="container">
+    <div class="middle-container">
+        <div>
+            <h1>Choose an account</h1>
+        </div>
+        <div>
+            <button *ngFor="let user of users$ | async" (click)="onUserSelectClick(user.userID)">
+                    <ng-container *ngIf="user.userID==2">
+                        <img src="assets/images/John.png" alt="User_icon">
+                    </ng-container>
+                    <ng-container *ngIf="user.userID==5">
+                        <img src="assets/images/Svensson.png" alt="User_icon">
+                    </ng-container>
+                    <ng-container *ngIf="user.userID==3">
+                        <img src="assets/images/Keanu.png" alt="User_icon">
+                    </ng-container>
+                    
+                    <div>
+                        <p>{{user.name}} {{user.surname}}</p>
+                        <p>{{user.email}}</p>
+                    </div>
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                
+            </button>
+            <button (click)="onClickDeleteAllCookies()">Add account</button>
+        </div>
     </div>
-    <button (click)="onClickDeleteAllCookies()">Add account</button>
 </div>
