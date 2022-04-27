@@ -30,13 +30,20 @@
 
     <div class="desk-confirmation-column">
         <div class="desk-confirmation-container">
-            <div class="text">
-                <p>You have selected desk {{tableMemory}} for {{selectedDate| date:'MMMM d'}}</p>
+            <div *ngIf="isDeskSelected(); else elseBlock">
+                <div class="text">
+                    <p>You have selected desk {{tableMemory}} for {{selectedDate| date:'MMMM d'}}</p>
+                </div>
+                <button mat-flat-button type="submit" (click)="onSubmit()" *ngIf="isDeskSelected()">
+                    Confirm booking
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
             </div>
-            <button mat-flat-button type="submit" (click)="onSubmit()" *ngIf="isDeskSelected()">
-                Confirm booking
-                <mat-icon>keyboard_arrow_right</mat-icon>
-            </button>
+            <ng-template #elseBlock>
+                <div class="text">
+                    <p>Please select a desk.</p>
+                </div>
+            </ng-template>
         </div>
     </div>
 
