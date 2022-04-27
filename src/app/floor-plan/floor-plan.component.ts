@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
-import { finalize, Observable, of } from 'rxjs';
+import { finalize, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
@@ -14,6 +14,10 @@ import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 export class FloorPlanComponent implements OnInit {
   allDesks$: Observable<DeskInterface[]> = of();
   bookedDesks$: Observable<number[]> = of();
+
+  regularBookedDesks!: Array<number>;
+
+  bookedDeskNumber: Number = 0;
 
   selectedDate = new Date();
   location!: Array<string>;
@@ -28,6 +32,9 @@ export class FloorPlanComponent implements OnInit {
     this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
     var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
     this.bookedDesks$ = this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10));
+    this.bookedDesks$.pipe(tap(res => { this.regularBookedDesks = res }));
+    console.log(this.regularBookedDesks);
+    //this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10)).subscribe(res => { this.bookedDeskNumber = res.length });
   }
 
   onSubmit() {
@@ -70,7 +77,9 @@ export class FloorPlanComponent implements OnInit {
       this.selectedDate.getTime() -
       this.selectedDate.getTimezoneOffset() * 60000
     );
-    /*for (let i = 0; i <= 46; i++) {
+    //this.list.subscribe(result => {console.log(result.length)});
+
+    /*for (let i = 0; i <= this.bookedDesks$.length; i++) {
       var booked = document.getElementById(`${i}`);
       if (booked === this.bookedDesks$) {
         booked?.classList.add('booked');
@@ -78,6 +87,17 @@ export class FloorPlanComponent implements OnInit {
       }
     }*/
 
+    console.log(this.bookedDeskNumber);
+
     localStorage.setItem('date', localDate.toISOString().slice(0, 10));
   }
 }
+
+/*export class AppComponent {
+   strings$: Observable<string[]> = of(["test", "test2", "test3"]);
+  private result: string[] = [];
+  constructor() {
+    this.strings$.pipe(tap(res => this.result = res));
+  }
+
+}*/
