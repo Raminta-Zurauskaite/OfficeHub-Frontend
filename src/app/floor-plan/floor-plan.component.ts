@@ -78,7 +78,7 @@ export class FloorPlanComponent implements OnInit {
   onDateChange() {
     var localDate = new Date(
       this.selectedDate.getTime() -
-        this.selectedDate.getTimezoneOffset() * 60000
+      this.selectedDate.getTimezoneOffset() * 60000
     );
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }

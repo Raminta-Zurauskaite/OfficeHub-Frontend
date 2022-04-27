@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {DataService} from "./service/data/data.service";
-import {Router} from "@angular/router";
+import { DataService } from "./service/data/data.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,9 @@ import {Router} from "@angular/router";
 export class AppComponent {
   title = 'officehub';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 
 }
