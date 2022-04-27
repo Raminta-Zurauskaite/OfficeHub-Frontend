@@ -70,13 +70,13 @@ export class FloorPlanComponent implements OnInit {
       this.selectedDate.getTime() -
       this.selectedDate.getTimezoneOffset() * 60000
     );
-    for (let i = 0; i <= 46; i++) {
+    /*for (let i = 0; i <= 46; i++) {
       var booked = document.getElementById(`${i}`);
       if (booked === this.bookedDesks$) {
         booked?.classList.add('booked');
         document.getElementById(`${this.tableMemory}`)?.classList.remove('booked');
       }
-    }
+    }*/
 
     localStorage.setItem('date', localDate.toISOString().slice(0, 10));
   }
