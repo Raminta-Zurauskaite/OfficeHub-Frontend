@@ -38,19 +38,25 @@ export class FloorPlanComponent implements OnInit {
   }
 
   onSubmit() {
-    var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
-    this.dataService.createBooking(
-      localStorage.getItem('user')!,
-      localStorage.getItem('city')!,
-      localStorage.getItem('building')!,
-      localStorage.getItem('floor')!,
-      localStorage.getItem('deskId')!,
-      localStorage.getItem('date')!
-    ).subscribe();
-    localStorage.removeItem('deskId');
-    localStorage.removeItem('booking_date');
+    var localDate = new Date(
+      this.selectedDate.getTime() -
+      this.selectedDate.getTimezoneOffset() * 60000
+    );
+    this.dataService
+      .createBooking(
+        localStorage.getItem('user')!,
+        localStorage.getItem('city')!,
+        localStorage.getItem('building')!,
+        localStorage.getItem('floor')!,
+        localStorage.getItem('deskId')!,
+        localStorage.getItem('booking_date')!
+      )
+      .subscribe();
     localStorage.removeItem('city');
     localStorage.removeItem('building');
+    localStorage.removeItem('booking_date');
+    localStorage.removeItem('floor');
+    localStorage.removeItem('deskId');
     this.router.navigate(['/bookings']);
   }
 
@@ -89,7 +95,7 @@ export class FloorPlanComponent implements OnInit {
 
     console.log(this.bookedDeskNumber);
 
-    localStorage.setItem('date', localDate.toISOString().slice(0, 10));
+    localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
 }
 

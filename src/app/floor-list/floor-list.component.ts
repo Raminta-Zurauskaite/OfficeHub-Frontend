@@ -12,6 +12,9 @@ import { DataService } from '../service/data/data.service';
 export class FloorListComponent implements OnInit {
   floors$: Observable<FloorInterface[]> = of();
 
+  building = localStorage.getItem('buildingName');
+  cityName = localStorage.getItem('cityName');
+
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
