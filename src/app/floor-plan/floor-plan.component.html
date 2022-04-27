@@ -33,7 +33,7 @@
             <div class="text">
                 <p>You have selected desk {{tableMemory}} for {{selectedDate| date:'MMMM d'}}</p>
             </div>
-            <button mat-flat-button type="submit" (click)="onSubmit()">
+            <button mat-flat-button type="submit" (click)="onSubmit()" *ngIf="isDeskSelected()">
                 Confirm booking
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </button>

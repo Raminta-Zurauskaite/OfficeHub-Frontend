@@ -31,6 +31,7 @@ export class FloorPlanComponent implements OnInit {
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
     var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
     this.bookedDesks$ = this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10));
     this.bookedDesks$.pipe(tap(res => { this.regularBookedDesks = res }));
     console.log(this.regularBookedDesks);
@@ -70,6 +71,7 @@ export class FloorPlanComponent implements OnInit {
   tableMemory = 0;
   onTableSelect(tableNumber: number, tableID: number) {
     var selected = document.getElementById(`${tableNumber}`);
+
     if (this.tableMemory != tableNumber) {
       selected?.classList.add('on');
       document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
@@ -96,6 +98,15 @@ export class FloorPlanComponent implements OnInit {
     console.log(this.bookedDeskNumber);
 
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
+  }
+
+  isDeskSelected() {
+    if (this.tableMemory == 0) {
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 }
 
