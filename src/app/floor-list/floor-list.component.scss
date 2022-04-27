@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 650px;
+    height: 620px;
+    border-radius: 6px;
+    padding: 45px 60px 57px 60px;
+}
+
+.middle-container>div:nth-of-type(1) {
+    height: 123px;
+}
+
+h1 {
+    font: 24px 'Segoe UI';
+}
+
+h6 {
+    font-size: 16px;
+    text-align: center;
+}
+
+.middle-container>div:nth-of-type(2) {
+    flex-grow: 1;
+    padding-bottom: 45px;
+    overflow: auto;
+}
+
+.button-select {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 374px;
+    height: 50px;
+    margin-bottom: 3px;
+    background-color: rgba(0, 0, 0, .05);
+    border: none;
+    padding: 0 14px 0 55px;
+    font-family: 'Roboto';
+    
+}
+
+.button-select:hover {
+    background-color: rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+.button-select:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.button-select:last-child {
+    border-radius: 0 0 6px 6px;
+}
+
+button>div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+p {
+    text-align: left;
+    margin-bottom: 0%;
+    font-size: 16px;
+}

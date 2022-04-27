@@ -1,12 +1,23 @@
-<div>
-    <h4>Choose your floor</h4>
-    <div *ngFor="let floor of floors$ | async">
-        <button (click)="onBuildingSelectClick(floor.floorID, floor.floorName)">
-            Floor: {{floor.floorName}}<br>
-        </button>
+<div class="container">
+    <div class="middle-container">
+        <div>
+            <h1>Choose your building</h1>
+            <h6>in {{building}}, {{cityName}}</h6>
+        </div>
+        <div>
+            <button class="button-select" *ngFor="let floor of floors$ | async"
+                (click)="onBuildingSelectClick(floor.floorID, floor.floorName)">
+                <div>
+                    <p>{{floor.floorName}}</p>
+                </div>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </div>
+        <div class="bottom-navigation">
+            <button mat-button (click)="onBackButtonClick()">
+                <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
+                Back
+            </button>
+        </div>
     </div>
-    <button mat-button (click)="onBackButtonClick()">
-        <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
-        Back
-    </button>
 </div>

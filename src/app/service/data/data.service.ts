@@ -55,6 +55,7 @@ export class DataService {
     );
   }
 
+
   createBooking(userID: String, cityID: String, buildingID: String, floorID: String, deskID: String, bookingDate: String): Observable<any> {
     return this.http.post(this.ipAddress + 'booking/',
       {
@@ -72,7 +73,6 @@ export class DataService {
       '././assets/data/COORDINATES.json'
     );
   }
-
 
   cancelBooking(bookingID: String): Observable<any> {
     return this.http.delete(this.ipAddress + 'booking/' + bookingID);
