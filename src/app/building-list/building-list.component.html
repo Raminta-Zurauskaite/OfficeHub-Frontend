@@ -1,25 +1,27 @@
-<app-header></app-header>
-<div class="container">
-    <div class="middle-container">
-        <div class="container-header">
-            <h1>Choose your building</h1>
-            <h6>in {{cityName}}</h6>
-        </div>
-        <div class="button-list-container">
-            <button class="button-select" *ngFor="let building of buildings$ | async"
-                (click)="onBuildingSelectClick(building.buildingID, building.buildingName)">
-                <span class="button-text">
-                    <span>{{building.buildingName}}</span>
-                    <span>{{building.address}}</span>
-                </span>
-                <mat-icon>keyboard_arrow_right</mat-icon>
-            </button>
-        </div>
-        <div class="bottom-navigation">
-            <button mat-button (click)="onBackButtonClick()">
-                <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
-                Back
-            </button>
+<div class="full-screen">
+    <app-header></app-header>
+    <div class="container">
+        <div class="middle-container">
+            <div class="container-header">
+                <h1>Choose your building</h1>
+                <h6>in {{cityName}}</h6>
+            </div>
+            <div class="button-list-container">
+                <button class="button-select" *ngFor="let building of buildings$ | async"
+                    (click)="onBuildingSelectClick(building.buildingID, building.buildingName)">
+                    <span class="button-text">
+                        <span>{{building.buildingName}}</span>
+                        <span>{{building.address}}</span>
+                    </span>
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+            </div>
+            <div class="bottom-navigation">
+                <button mat-button (click)="onBackButtonClick()">
+                    <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
+                    Back
+                </button>
+            </div>
         </div>
     </div>
 </div>
