@@ -1,5 +1,27 @@
-<mat-sidenav-container class="fullScreenNavContainer">
-    <mat-sidenav mode="side" opened position="end" class="sideNavigationBar" fixedBottomGap="100px">
+<div class="page-layout">
+    <ng-container *ngIf="bookings$ | async as bookings">
+        <ng-container *ngIf="bookings.length; else noBookings">
+            <div class="booking-info-container" *ngIf="!isDisabled">
+                <div class="calendar">
+                    <mat-card class="calendar-card">
+                        <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
+                    </mat-card>
+                </div>
+                <div class="image">
+                    <img src="assets/images/floor_plan.png" alt="Floor layout">
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <ng-template #noBookings>
+        <p>You have no bookings</p>
+        <div class="buttonAligment">
+            <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
+        </div>
+    </ng-template>
+
+    <div class="desk-confirmation-column">
         <ng-container *ngIf="bookings$ | async as bookings">
             <ng-container *ngIf="bookings.length; else noBookings">
                 <mat-selection-list #bookingsList [multiple]="false">
@@ -12,19 +34,19 @@
                     <div class="buttonAligment">
                         <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
 
-                        <button mat-raised-button *ngIf="!isDisabled" (click)="onCancelBookingClick()">Cancel booking</button>
+                        <button mat-raised-button *ngIf="!isDisabled" (click)="onCancelBookingClick()">Cancel
+                            booking</button>
                     </div>
                 </mat-selection-list>
             </ng-container>
         </ng-container>
-    </mat-sidenav>
-    <mat-sidenav-content>
         <ng-container *ngIf="bookings$ | async as bookings">
             <ng-container *ngIf="bookings.length; else noBookings">
                 <div class="booking-info-container" *ngIf="!isDisabled">
                     <div class="calendar">
                         <mat-card class="calendar-card">
-                            <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate"></mat-calendar>
+                            <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate">
+                            </mat-calendar>
                         </mat-card>
                     </div>
                     <div class="image">
@@ -33,12 +55,5 @@
                 </div>
             </ng-container>
         </ng-container>
-    </mat-sidenav-content>
-</mat-sidenav-container>
-
-<ng-template #noBookings>
-    <p>You have no bookings</p>
-    <div class="buttonAligment">
-        <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
     </div>
-</ng-template>
+</div>
