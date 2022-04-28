@@ -2,6 +2,15 @@
     display: flex;
     justify-content: space-between;
 }
+.full-screen {
+display: flex;
+flex-direction: column;
+}
+
+.fullScreenNavContainer{
+    height: 1080px;
+    background-color: #e7e5e5e6;
+}
 
 .calendar {
     display: flex;

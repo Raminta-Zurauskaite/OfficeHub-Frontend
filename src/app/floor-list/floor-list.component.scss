@@ -1,4 +1,19 @@
+.full-screen {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("Selection_background.png") no-repeat center center fixed;
+    background-size: 100% auto;
+}
+
 .container {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +30,7 @@
     padding: 45px 60px 57px 60px;
 }
 
-.middle-container>div:nth-of-type(1) {
+.container-header {
     height: 123px;
 }
 
@@ -28,10 +43,9 @@ h6 {
     text-align: center;
 }
 
-.middle-container>div:nth-of-type(2) {
-    flex-grow: 1;
-    padding-bottom: 45px;
+.button-list-container {
     overflow: auto;
+    height: 315px;
 }
 
 .button-select {
@@ -61,14 +75,23 @@ h6 {
     border-radius: 0 0 6px 6px;
 }
 
-button>div {
+.button-select>span {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-p {
+span {
     text-align: left;
     margin-bottom: 0%;
     font-size: 16px;
+}
+
+.bottom-navigation{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    flex: 1;
 }
