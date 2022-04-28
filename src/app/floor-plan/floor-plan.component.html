@@ -1,9 +1,11 @@
+<app-header></app-header>
 <div class="page-layout">
 
-    <div class="calandar">
+    <div class="calendar">
         <div class="calendar-card-container">
             <mat-card class="calendar-card">
-                <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateChange()"></mat-calendar>
+                <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateChange()" [minDate]="minDate">
+                </mat-calendar>
             </mat-card>
         </div>
         <div>
@@ -29,7 +31,7 @@
     </div>
 
     <div class="desk-confirmation-column">
-        <div class="desk-confirmation-container">
+        <div class="desk-confirmation-container" *ngIf="isDeskSelected(); else elseBlock">
             <div class="text">
                 <p>You have selected desk {{tableMemory}} for {{selectedDate| date:'MMMM d'}}</p>
             </div>
@@ -38,6 +40,15 @@
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
         </div>
+
+        <ng-template #elseBlock>
+            <div class="desk-confirmation-container">
+                <div class="text">
+                    <p>Please select a desk.</p>
+                </div>
+            </div>
+        </ng-template>
+
     </div>
 
 </div>
