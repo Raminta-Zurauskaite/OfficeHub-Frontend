@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
-import { finalize, Observable, of, tap } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
 @Component({
   selector: 'app-floor-plan',
@@ -17,6 +15,8 @@ export class FloorPlanComponent implements OnInit {
   selectedDate = new Date();
   location!: Array<string>;
 
+  minDate = new Date();
+
   floor = localStorage.getItem('floorName');
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
@@ -26,6 +26,7 @@ export class FloorPlanComponent implements OnInit {
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
     var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    this.minDate = new Date(localDate);
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
 
