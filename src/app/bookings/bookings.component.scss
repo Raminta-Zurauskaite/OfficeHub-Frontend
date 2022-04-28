@@ -3,29 +3,11 @@
     justify-content: space-between;
 }
 
-.full-screen {
-    display: flex;
-    flex-direction: column;
-}
-
-.fullScreenNavContainer {
-    height: 1080px;
-    background-color: #e7e5e5e6;
-}
-
 .calendar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 0 60px 75px;
-}
-
-.booking-info-container {
-    display: flex;
-}
-
-.booking-info-child {
-    flex: 1;
 }
 
 .booking-info-text {
@@ -52,10 +34,6 @@
     margin-top: 10em;
 }
 
-button {
-    width: 220px;
-}
-
 .buttonAligment {
     display: flex;
     flex-direction: column;
@@ -80,7 +58,7 @@ button {
 
 .desk-confirmation-container button {
     font-size: 20px;
-    height: 44px;
+    height: 70px;
     background-color: #E9E9E9;
     margin: 5px 5px 5px 5px;
 }
@@ -130,7 +108,6 @@ button {
     justify-content: space-around;
     align-items: center;
     width: 374px;
-    height: 70px;
     margin-bottom: 3px;
     background-color: rgba(0, 0, 0, .05);
     border: none;
@@ -149,19 +126,48 @@ button {
     justify-content: space-around;
     align-items: center;
     width: 374px;
-    height: 70px;
+    height: 44px !important;
     margin-bottom: 3px;
     background-color: rgba(0, 255, 17, 0.2) !important;
-    border: none;
-    padding: 0 14px 0 16px;
     font-family: 'Roboto';
 }
 
-.button-select-start:hover {
-    background-color: rgba(0, 0, 0, .15);
-    cursor: pointer;
+.button-select-cancel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 374px;
+    height: 44px !important;
+    margin-bottom: 3px;
+    background-color: rgba(0, 0, 0, .05);
+    font-family: 'Roboto';
 }
 
 .button-container {
     margin-top: 30px;
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+span {
+    text-align: left;
+    padding-left: 16px;
+    margin-bottom: 0%;
+    font-family: 'Roboto';
+}
+
+span:first-of-type {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    padding-bottom: 3px;
+}
+
+span:last-of-type {
+    font-size: 14px;
+    color: #00000099;
 }
