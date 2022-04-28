@@ -1,5 +1,5 @@
+<app-header></app-header>
 <div class="page-layout">
-
     <ng-container *ngIf="bookings$ | async as bookings">
         <ng-container *ngIf="bookings.length; else noBookings">
             <div class="calendar">
@@ -27,17 +27,10 @@
             </div>
         </ng-container>
     </ng-container>
-    <ng-template #noBookings>
-        <div class="buttonAligment">
-            <p>You have no bookings</p>
-            <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
-        </div>
-    </ng-template>
-
-    <div class="desk-confirmation-column">
-        <div class="desk-confirmation-container">
-            <ng-container *ngIf="bookings$ | async as bookings">
-                <ng-container *ngIf="bookings.length; else noBookings">
+    <ng-container *ngIf="bookings$ | async as bookings">
+        <ng-container *ngIf="bookings.length">
+            <div class="desk-confirmation-column">
+                <div class="desk-confirmation-container">
                     <mat-selection-list #bookingsList [multiple]="false">
                         <p>List of your existing bookings:</p>
                         <mat-list-option class="button-select" *ngFor="let booking of bookings"
@@ -48,13 +41,19 @@
                         </mat-list-option>
                         <div class="buttonAligment">
                             <button mat-flat-button (click)="onClickStartBooking()">Start new booking</button>
-
                             <button mat-flat-button *ngIf="!isDisabled" (click)="onCancelBookingClick()">Cancel
                                 booking</button>
                         </div>
                     </mat-selection-list>
-                </ng-container>
-            </ng-container>
-        </div>
-    </div>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
 </div>
+
+<ng-template #noBookings>
+    <p>You have no bookings</p>
+    <div class="buttonAligment">
+        <button mat-raised-button (click)="onClickStartBooking()">Start new booking</button>
+    </div>
+</ng-template>
