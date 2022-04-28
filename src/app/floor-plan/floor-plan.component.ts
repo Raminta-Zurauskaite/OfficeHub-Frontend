@@ -13,9 +13,8 @@ import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 })
 export class FloorPlanComponent implements OnInit {
   allDesks$: Observable<DeskInterface[]> = of();
-  bookedDesks$: Observable<number[]> = of();
 
-  regularBookedDesks!: Array<number>;
+  bookedDesks: Array<number> = [];
 
   bookedDeskNumber: Number = 0;
 
@@ -30,35 +29,28 @@ export class FloorPlanComponent implements OnInit {
 
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
-    var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
-    localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
-    this.bookedDesks$ = this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10));
-    this.bookedDesks$.pipe(tap(res => { this.regularBookedDesks = res }));
-    console.log(this.regularBookedDesks);
-    //this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10)).subscribe(res => { this.bookedDeskNumber = res.length });
+    this.loadBookedDesks();
   }
 
   onSubmit() {
-    var localDate = new Date(
-      this.selectedDate.getTime() -
-      this.selectedDate.getTimezoneOffset() * 60000
-    );
-    this.dataService
-      .createBooking(
-        localStorage.getItem('user')!,
-        localStorage.getItem('city')!,
-        localStorage.getItem('building')!,
-        localStorage.getItem('floor')!,
-        localStorage.getItem('deskId')!,
-        localStorage.getItem('booking_date')!
-      )
-      .subscribe();
-    localStorage.removeItem('city');
-    localStorage.removeItem('building');
-    localStorage.removeItem('booking_date');
-    localStorage.removeItem('floor');
-    localStorage.removeItem('deskId');
-    this.router.navigate(['/bookings']);
+    if(!this.bookedDesks.includes(this.tableMemory)){
+      this.dataService
+        .createBooking(
+          localStorage.getItem('user')!,
+          localStorage.getItem('city')!,
+          localStorage.getItem('building')!,
+          localStorage.getItem('floor')!,
+          localStorage.getItem('deskId')!,
+          localStorage.getItem('booking_date')!
+        )
+        .subscribe();
+      localStorage.removeItem('city');
+      localStorage.removeItem('building');
+      localStorage.removeItem('booking_date');
+      localStorage.removeItem('floor');
+      localStorage.removeItem('deskId');
+      this.router.navigate(['/bookings']);
+    }
   }
 
   onBackButtonClick() {
@@ -68,36 +60,32 @@ export class FloorPlanComponent implements OnInit {
     this.router.navigate(['/floor']);
   }
 
+  loadBookedDesks() {
+      for (let i = 0; i < this.bookedDesks.length; i++) {
+        document.getElementById(`${this.bookedDesks[i]}`)?.classList.remove('booked');
+    }
+    var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
+    this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10)).subscribe(res => {this.bookedDesks = res;
+      for (let i = 0; i < this.bookedDesks.length; i++) {
+        document.getElementById(`${this.bookedDesks[i]}`)?.classList.add('booked');
+      }});
+  }
+
   tableMemory = 0;
   onTableSelect(tableNumber: number, tableID: number) {
     var selected = document.getElementById(`${tableNumber}`);
 
-    if (this.tableMemory != tableNumber) {
-      selected?.classList.add('on');
+    if (this.tableMemory != tableNumber && !this.bookedDesks.includes(tableNumber)) {
       document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
+      document.getElementById(`${tableNumber}`)?.classList.add('on');
       this.tableMemory = tableNumber;
+      localStorage.setItem('deskId', tableID.toString());
     }
-    localStorage.setItem('deskId', tableID.toString());
   }
 
   onDateChange() {
-    var localDate = new Date(
-      this.selectedDate.getTime() -
-      this.selectedDate.getTimezoneOffset() * 60000
-    );
-    //this.list.subscribe(result => {console.log(result.length)});
-
-    /*for (let i = 0; i <= this.bookedDesks$.length; i++) {
-      var booked = document.getElementById(`${i}`);
-      if (booked === this.bookedDesks$) {
-        booked?.classList.add('booked');
-        document.getElementById(`${this.tableMemory}`)?.classList.remove('booked');
-      }
-    }*/
-    this.bookedDesks$.pipe(tap(res => { this.regularBookedDesks = res }));
-    console.log(this.regularBookedDesks);
-
-    localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
+    this.loadBookedDesks();
   }
 
   isDeskSelected() {
@@ -109,12 +97,3 @@ export class FloorPlanComponent implements OnInit {
     }
   }
 }
-
-/*export class AppComponent {
-   strings$: Observable<string[]> = of(["test", "test2", "test3"]);
-  private result: string[] = [];
-  constructor() {
-    this.strings$.pipe(tap(res => this.result = res));
-  }
-
-}*/
