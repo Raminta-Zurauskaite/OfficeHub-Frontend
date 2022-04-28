@@ -136,6 +136,7 @@ button {
     border: none;
     padding: 0 14px 0 16px;
     font-family: 'Roboto';
+    border-radius: 6px 6px 6px 6px;
 }
 
 .button-select:hover {
@@ -143,10 +144,24 @@ button {
     cursor: pointer;
 }
 
-.button-select:only-child {
-    border-radius: 6px 6px 6px 6px;
+.button-select-start {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 374px;
+    height: 70px;
+    margin-bottom: 3px;
+    background-color: rgba(0, 255, 17, 0.2) !important;
+    border: none;
+    padding: 0 14px 0 16px;
+    font-family: 'Roboto';
 }
 
-.start-button {
+.button-select-start:hover {
+    background-color: rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+.button-container {
     margin-top: 30px;
 }

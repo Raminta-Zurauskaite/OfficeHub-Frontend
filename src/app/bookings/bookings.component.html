@@ -40,16 +40,16 @@
                             {{booking.building_name}}, {{booking.floor_name}}
                         </mat-list-option>
 
-                        <div class="start-button">
-
-                            <button mat-flat-button class="button-select" type="submit"
-                                (click)="onClickStartBooking()">Start new
-                                booking
+                        <div class="button-container">
+                            <button mat-flat-button class="button-select-start" type="submit"
+                                (click)="onClickStartBooking()">
+                                Start new booking
                             </button>
                             <button mat-flat-button class="button-select" type="submit" *ngIf="!isDisabled"
                                 (click)="onCancelBookingClick()">Cancel
                                 booking
                             </button>
+
                         </div>
                     </mat-selection-list>
                 </div>
