@@ -5,7 +5,8 @@
             <div class="calendar">
                 <div class="calendar-card-container">
                     <mat-card class="calendar-card">
-                        <mat-calendar #calendar [(selected)]="selectedDate" [startAt]="selectedDate">
+                        <mat-calendar #calendar [minDate]="selectedDate" [maxDate]="selectedDate"
+                            [(selected)]="selectedDate">
                         </mat-calendar>
                     </mat-card>
                 </div>
