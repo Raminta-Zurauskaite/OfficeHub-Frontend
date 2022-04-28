@@ -17,6 +17,8 @@ export class FloorPlanComponent implements OnInit {
   selectedDate = new Date();
   location!: Array<string>;
 
+  minDate = new Date();
+
   floor = localStorage.getItem('floorName');
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
@@ -26,6 +28,7 @@ export class FloorPlanComponent implements OnInit {
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
     var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    this.minDate = new Date(localDate);
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
 
