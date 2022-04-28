@@ -30,8 +30,27 @@ button{
     width: 220px;
 }
 
-.buttonAligment{
+.noBookings{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.noBookings p{
+    font: 24px 'Segoe UI';
+}
+
+.no-bookings-button{
+    width: 318px;
+    height: 44px;
+    font: 20px 'Roboto';
+    font-weight: 500;
+    background-color:rgba(0, 255, 17, 0.2);
+}
+
+.no-bookings-button mat-icon {
+    float: right;
+    font-size: 26px;
+}
+
+
