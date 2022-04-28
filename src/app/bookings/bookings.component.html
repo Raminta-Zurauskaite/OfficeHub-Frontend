@@ -19,7 +19,10 @@
                         <!-- <p>{{floor}}, {{building}}, {{city}}</p> -->
                     </div>
                     <img src="assets/images/floor_plan.png" alt="Floor layout">
-
+                    <svg id="tables-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 1060">
+                        <path *ngFor="let desk of allDesks$ | async" id="{{desk.desk_number}}"
+                            [attr.d]=desk.desk_coordinates />
+                    </svg>
                 </div>
             </div>
         </ng-container>
