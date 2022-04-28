@@ -2,41 +2,12 @@
     display: flex;
     justify-content: space-between;
 }
-.full-screen {
-    display: flex;
-    flex-direction: column;
-}
-
-.fullScreenNavContainer{
-    height: 1080px;
-    background-color: #e7e5e5e6;
-}
 
 .calendar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 0 60px 75px;
-}
-
-.booking-info-container {
-    display: flex;
-}
-
-.booking-info-child {
-    flex: 1;
-}
-
-.booking-info-text {
-    position: relative;
-    margin: auto;
-    top: -20px;
-    background-color: white;
-    border-radius: 0 0 6px 6px;
-    width: 650px;
-    height: 83px;
-    padding-top: 25px;
-    text-align: center;
 }
 
 .calendar {
@@ -57,6 +28,7 @@ button {
 
 .noBookings{
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -112,34 +84,22 @@ button {
     padding-top: 6px;
 }
 
-.tables-container {
-    height: 900px;
-}
-
 .tables-image {
     position: relative;
     display: inline-block;
-    top: -79px;
 }
 
 .tables-container img {
-    position: absolute;
-    max-width: 100%;
-    height: auto;
+    display: block;
 }
 
 .tables-container svg {
-    position: relative;
-    top: -19px;
+    position: absolute;
+    top: -21px;
     left: 0;
     z-index: 2;
     mix-blend-mode: overlay;
     fill: #606060;
-}
-
-.tables-container path:hover {
-    fill: #00FF11;
-    cursor: pointer;
 }
 
 .button-select {
@@ -166,4 +126,8 @@ button {
 
 .button-select:last-child {
     border-radius: 0 0 6px 6px;
+}
+
+.on {
+    fill: #00FF11;
 }

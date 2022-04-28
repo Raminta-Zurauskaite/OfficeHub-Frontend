@@ -21,11 +21,16 @@ export class FloorPlanComponent implements OnInit {
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
-    var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    this.allDesks$ = this.dataService.loadFloorDesks(
+      localStorage.getItem('floor')!
+    );
+    var localDate = new Date(
+      this.selectedDate.getTime() -
+        this.selectedDate.getTimezoneOffset() * 60000
+    );
     this.minDate = new Date(localDate);
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
@@ -33,7 +38,7 @@ export class FloorPlanComponent implements OnInit {
   onSubmit() {
     var localDate = new Date(
       this.selectedDate.getTime() -
-      this.selectedDate.getTimezoneOffset() * 60000
+        this.selectedDate.getTimezoneOffset() * 60000
     );
     this.dataService
       .createBooking(
@@ -85,8 +90,7 @@ export class FloorPlanComponent implements OnInit {
   isDeskSelected() {
     if (this.tableMemory == 0) {
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   }
