@@ -59,6 +59,7 @@ export class FloorPlanComponent implements OnInit {
 
   onBackButtonClick() {
     localStorage.removeItem('floor');
+    localStorage.removeItem('floorName');
     localStorage.removeItem('deskId');
     localStorage.removeItem('booking_date');
     this.router.navigate(['/floor']);
@@ -78,7 +79,7 @@ export class FloorPlanComponent implements OnInit {
   onDateChange() {
     var localDate = new Date(
       this.selectedDate.getTime() -
-      this.selectedDate.getTimezoneOffset() * 60000
+        this.selectedDate.getTimezoneOffset() * 60000
     );
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
