@@ -1,3 +1,7 @@
+.page-layout {
+    display: flex;
+    justify-content: space-between;
+}
 .full-screen {
     display: flex;
     flex-direction: column;
@@ -8,10 +12,11 @@
     background-color: #e7e5e5e6;
 }
 
-.sideNavigationBar{
-    width: 300px;
-    padding: 10px 10px 10px 10px;
-    
+.calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 60px 75px;
 }
 
 .booking-info-container {
@@ -22,11 +27,31 @@
     flex: 1;
 }
 
-.calendar-card {
-    width: 250px;
+.booking-info-text {
+    position: relative;
+    margin: auto;
+    top: -20px;
+    background-color: white;
+    border-radius: 0 0 6px 6px;
+    width: 650px;
+    height: 83px;
+    padding-top: 25px;
+    text-align: center;
 }
 
-button{
+.calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 60px 75px;
+}
+
+.calendar-card {
+    width: 250px;
+    margin-top: 10em;
+}
+
+button {
     width: 220px;
 }
 
@@ -34,6 +59,7 @@ button{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .noBookings p{
@@ -54,3 +80,90 @@ button{
 }
 
 
+.desk-confirmation-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.desk-confirmation-container {
+    background-color: white;
+    font: 24px 'Segoe UI';
+    border-radius: 6px;
+    width: 385px;
+    margin: 0 30px 30px 0;
+    padding: 10px 10px 10px 10px;
+}
+
+.desk-confirmation-container button {
+    font-size: 20px;
+    height: 44px;
+    background-color: #E9E9E9;
+    margin: 5px 5px 5px 5px;
+}
+
+.desk-confirmation-container p {
+    text-align: center;
+}
+
+.desk-confirmation-container mat-icon {
+    float: right;
+    font-size: 26px;
+    padding-top: 6px;
+}
+
+.tables-container {
+    height: 900px;
+}
+
+.tables-image {
+    position: relative;
+    display: inline-block;
+    top: -79px;
+}
+
+.tables-container img {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+}
+
+.tables-container svg {
+    position: relative;
+    top: -19px;
+    left: 0;
+    z-index: 2;
+    mix-blend-mode: overlay;
+    fill: #606060;
+}
+
+.tables-container path:hover {
+    fill: #00FF11;
+    cursor: pointer;
+}
+
+.button-select {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 374px;
+    height: 70px;
+    margin-bottom: 3px;
+    background-color: rgba(0, 0, 0, .05);
+    border: none;
+    padding: 0 14px 0 16px;
+    font-family: 'Roboto';
+}
+
+.button-select:hover {
+    background-color: rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+.button-select:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.button-select:last-child {
+    border-radius: 0 0 6px 6px;
+}

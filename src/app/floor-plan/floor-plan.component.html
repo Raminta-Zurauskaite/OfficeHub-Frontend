@@ -1,15 +1,16 @@
 <app-header></app-header>
 <div class="page-layout">
-    
-    <div class="calandar">
+
+    <div class="calendar">
         <div class="calendar-card-container">
             <mat-card class="calendar-card">
-                <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateChange()"></mat-calendar>
+                <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateChange()" [minDate]="minDate">
+                </mat-calendar>
             </mat-card>
         </div>
         <div>
             <button class="back-button" mat-flat-button (click)="onBackButtonClick()">
-                <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon> 
+                <mat-icon class="mat-icon-style">keyboard_arrow_left</mat-icon>
                 Back
             </button>
         </div>
@@ -23,22 +24,31 @@
             </div>
             <img src="assets/images/floor_plan.png" alt="Floor layout">
             <svg id="tables-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 1060">
-                <path *ngFor="let desk of svgDesks$ | async" id="{{desk.id}}" (click)="onTableSelect(desk.id)" [attr.d]=desk.coords />
+                <path *ngFor="let desk of allDesks$ | async" id="{{desk.desk_number}}"
+                    (click)="onTableSelect(desk.desk_number, desk.desk_id)" [attr.d]=desk.desk_coordinates />
             </svg>
         </div>
     </div>
 
     <div class="desk-confirmation-column">
-        <div class="desk-confirmation-container">
+        <div class="desk-confirmation-container" *ngIf="isDeskSelected(); else elseBlock">
             <div class="text">
                 <p>You have selected desk {{tableMemory}} for {{selectedDate| date:'MMMM d'}}</p>
             </div>
-            <button mat-flat-button type="submit" (click)="onSubmit()">
+            <button mat-flat-button type="submit" (click)="onSubmit()" *ngIf="isDeskSelected()">
                 Confirm booking
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
         </div>
+
+        <ng-template #elseBlock>
+            <div class="desk-confirmation-container">
+                <div class="text">
+                    <p>Please select a desk.</p>
+                </div>
+            </div>
+        </ng-template>
+
     </div>
-    
-    
+
 </div>

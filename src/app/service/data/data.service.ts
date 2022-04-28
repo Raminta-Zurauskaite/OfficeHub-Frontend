@@ -18,6 +18,7 @@ export class DataService {
   }
   constructor(private http: HttpClient) { }
 
+  //private ipAddress = 'http://localhost:8080/';
   private ipAddress = 'https://officehubbackend.herokuapp.com/';
 
   loadUsers(): Observable<UserInterface[]> {
@@ -42,6 +43,10 @@ export class DataService {
 
   loadFloorDesks(floorID: String): Observable<DeskInterface[]> {
     return this.http.get<DeskInterface[]>(this.ipAddress + 'desk/' + floorID);
+  }
+
+  loadBookedFloorDesks(floorID: String, date: String): Observable<number[]> {
+    return this.http.get<number[]>(this.ipAddress + 'booking/' + floorID + '/date/' + date);
   }
 
   loadBookings(userID: String): Observable<BookingsInterface[]> {

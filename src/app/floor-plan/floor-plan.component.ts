@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
-import { finalize, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 
 @Component({
   selector: 'app-floor-plan',
@@ -13,32 +11,29 @@ import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 })
 export class FloorPlanComponent implements OnInit {
   allDesks$: Observable<DeskInterface[]> = of();
-  bookedDesks$: Observable<DeskInterface[]> = of();
-  svgDesks$: Observable<CoordinatesInterface[]> = of();
 
   selectedDate = new Date();
   location!: Array<string>;
+
+  minDate = new Date();
 
   floor = localStorage.getItem('floorName');
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this.allDesks$ = this.dataService.loadFloorDesks(
-      localStorage.getItem('floor')!
-    );
-
-    this.svgDesks$ = this.dataService.loadCoords();
-
-    this.onTableSelect(1);
+    this.allDesks$ = this.dataService.loadFloorDesks(localStorage.getItem('floor')!);
+    var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
+    this.minDate = new Date(localDate);
+    localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
   }
 
   onSubmit() {
     var localDate = new Date(
       this.selectedDate.getTime() -
-        this.selectedDate.getTimezoneOffset() * 60000
+      this.selectedDate.getTimezoneOffset() * 60000
     );
     this.dataService
       .createBooking(
@@ -53,6 +48,7 @@ export class FloorPlanComponent implements OnInit {
     localStorage.removeItem('city');
     localStorage.removeItem('building');
     localStorage.removeItem('booking_date');
+    localStorage.removeItem('floor');
     localStorage.removeItem('deskId');
     this.router.navigate(['/bookings']);
   }
@@ -66,14 +62,15 @@ export class FloorPlanComponent implements OnInit {
   }
 
   tableMemory = 0;
-  onTableSelect(tableNumber: number) {
+  onTableSelect(tableNumber: number, tableID: number) {
     var selected = document.getElementById(`${tableNumber}`);
+
     if (this.tableMemory != tableNumber) {
       selected?.classList.add('on');
       document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
       this.tableMemory = tableNumber;
     }
-    localStorage.setItem('deskId', tableNumber.toString());
+    localStorage.setItem('deskId', tableID.toString());
   }
 
   onDateChange() {
@@ -81,6 +78,16 @@ export class FloorPlanComponent implements OnInit {
       this.selectedDate.getTime() -
         this.selectedDate.getTimezoneOffset() * 60000
     );
+
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
+  }
+
+  isDeskSelected() {
+    if (this.tableMemory == 0) {
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 }

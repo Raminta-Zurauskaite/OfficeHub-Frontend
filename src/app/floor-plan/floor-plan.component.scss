@@ -1,4 +1,4 @@
-.page-layout{
+.page-layout {
     display: flex;
     justify-content: space-between;
 }
@@ -7,19 +7,23 @@
     fill: #00FF11;
 }
 
-.calandar {
+.booked {
+    fill: #0000;
+}
+
+.calendar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin:0 0 60px 75px;
+    margin: 0 0 60px 75px;
 }
 
 .calendar-card {
     width: 250px;
-    margin-top:10em;
+    margin-top: 10em;
 }
 
-.back-button{
+.back-button {
     background-color: transparent;
     font-size: 16px;
 }
@@ -28,7 +32,7 @@
     padding-bottom: 3px;
 }
 
-.booking-info-text{
+.booking-info-text {
     position: relative;
     margin: auto;
     top: -20px;
@@ -40,16 +44,17 @@
     text-align: center;
 }
 
-.tables-container{
+.tables-container {
     height: 900px;
 }
+
 .tables-image {
     position: relative;
     display: inline-block;
     top: -79px;
 }
 
-.tables-container img{
+.tables-container img {
     position: absolute;
     max-width: 100%;
     height: auto;
@@ -64,18 +69,18 @@
     fill: #606060;
 }
 
-.tables-container path:hover{
+.tables-container path:hover {
     fill: #00FF11;
     cursor: pointer;
 }
 
-.desk-confirmation-column{
+.desk-confirmation-column {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
-.desk-confirmation-container{
+.desk-confirmation-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -88,7 +93,7 @@
     margin: 0 30px 30px 0;
 }
 
-.desk-confirmation-container button{
+.desk-confirmation-container button {
     font-size: 20px;
     height: 44px;
     background-color: #E9E9E9;
@@ -99,4 +104,3 @@
     font-size: 26px;
     padding-top: 6px;
 }
-
