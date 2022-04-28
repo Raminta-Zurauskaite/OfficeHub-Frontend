@@ -2,12 +2,13 @@
     display: flex;
     justify-content: space-between;
 }
+
 .full-screen {
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
-.fullScreenNavContainer{
+.fullScreenNavContainer {
     height: 1080px;
     background-color: #e7e5e5e6;
 }
@@ -142,10 +143,10 @@ button {
     cursor: pointer;
 }
 
-.button-select:first-child {
-    border-radius: 6px 6px 0 0;
+.button-select:only-child {
+    border-radius: 6px 6px 6px 6px;
 }
 
-.button-select:last-child {
-    border-radius: 0 0 6px 6px;
+.start-button {
+    margin-top: 30px;
 }

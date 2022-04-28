@@ -13,7 +13,7 @@ import { DataService } from '../service/data/data.service';
 })
 export class BookingsComponent implements OnInit {
   @ViewChild('calendar', { static: false })
-  allDesks$: Observable<DeskInterface[]> = of();
+  //allDesks$: Observable<DeskInterface[]> = of();
   calendar!: MatCalendar<Date>;
   selectedDate = new Date();
   isDisabled: boolean = true;
@@ -28,7 +28,7 @@ export class BookingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.allDesks$ = this.dataService.loadFloorDesks('1');
+    //this.allDesks$ = this.dataService.loadFloorDesks('1');
   }
 
   onClickStartBooking() {
@@ -46,7 +46,6 @@ export class BookingsComponent implements OnInit {
     if (this.tableMemory != tableNumber) {
       selected?.classList.add('on');
       document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
-      console.log(this.tableMemory, tableNumber);
       this.tableMemory = tableNumber;
     }
 
