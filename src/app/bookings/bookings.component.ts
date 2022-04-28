@@ -3,6 +3,7 @@ import { MatCalendar } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
 import { Observable, of, filter, finalize } from 'rxjs';
 import { BookingsInterface } from 'src/assets/data/Bookings';
+import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { DataService } from '../service/data/data.service';
 })
 export class BookingsComponent implements OnInit {
   @ViewChild('calendar', { static: false })
+  allDesks$: Observable<DeskInterface[]> = of();
   calendar!: MatCalendar<Date>;
   selectedDate = new Date();
   isDisabled: boolean = true;
@@ -26,17 +28,27 @@ export class BookingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.allDesks$ = this.dataService.loadFloorDesks('1');
   }
 
   onClickStartBooking() {
     this.router.navigate(['/city']);
   }
 
-  onSelectedBookingClick(bookingDate: string, bookingId: number) {
+  tableMemory = 0;
+  onSelectedBookingClick(bookingDate: string, bookingId: number, tableNumber: number) {
     this.isDisabled = false;
     this.selectedDate = new Date(bookingDate);
-    this.calendar._goToDateInView(this.selectedDate, 'month');
+    //this.calendar._goToDateInView(this.selectedDate, 'month');
     this.selectedBookingId = bookingId;
+    var selected = document.getElementById(`${tableNumber}`);
+
+    if (this.tableMemory != tableNumber) {
+      selected?.classList.add('on');
+      document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
+      this.tableMemory = tableNumber;
+    }
+    console.log(this.tableMemory, tableNumber);
   }
 
   onCancelBookingClick() {
