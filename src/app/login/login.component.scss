@@ -1,9 +1,26 @@
-.container{
+.full-screen {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("Login_background.png") no-repeat center center fixed;
+    background-size: 100% auto;
+}
+
+.container {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.middle-container{
-    align-self:center;
+
+.middle-container {
+    align-self: center;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -15,15 +32,20 @@
     padding-top: 45px;
 }
 
-.middle-container>div:first-of-type{
+.container-header {
     height: 123px;
 }
 
-h1{
+h1 {
     font: 24px 'Segoe UI';
 }
 
-button{
+.button-list-container {
+    overflow: auto;
+    height: 315px;
+}
+
+button {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -36,40 +58,42 @@ button{
     font-family: 'Roboto';
 }
 
-button:hover{
+button:hover {
     background-color: rgba(0, 0, 0, .15);
     cursor: pointer;
 }
 
-button:first-child{
+button:first-child {
     border-radius: 6px 6px 0 0;
 }
 
-button:last-of-type{
+button:last-of-type {
     border-radius: 0 0 6px 6px;
     height: 50px;
     font-size: 16px;
 }
 
-button>div{
+.button-text {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-p{
+span {
     text-align: left;
     padding-left: 16px;
     margin-bottom: 0%;
     font-family: 'Roboto';
 }
 
-p:first-of-type{
+span:first-of-type {
     font-size: 20px;
     font-weight: 500;
+    color: #000000;
+    padding-bottom: 3px;
 }
 
-p:last-of-type{
+span:last-of-type {
     font-size: 14px;
     color: #00000099;
 }
