@@ -2,15 +2,6 @@
     display: flex;
     justify-content: space-between;
 }
-.full-screen {
-display: flex;
-flex-direction: column;
-}
-
-.fullScreenNavContainer{
-    height: 1080px;
-    background-color: #e7e5e5e6;
-}
 
 .calendar {
     display: flex;
@@ -19,20 +10,11 @@ flex-direction: column;
     margin: 0 0 60px 75px;
 }
 
-.booking-info-container {
-    display: flex;
-}
-
-.booking-info-child {
-    flex: 1;
-}
-
 .booking-info-text {
     position: relative;
     margin: auto;
     top: -20px;
     background-color: white;
-    border-radius: 0 0 6px 6px;
     width: 650px;
     height: 83px;
     padding-top: 25px;
@@ -49,10 +31,6 @@ flex-direction: column;
 .calendar-card {
     width: 250px;
     margin-top: 10em;
-}
-
-button {
-    width: 220px;
 }
 
 .buttonAligment {
@@ -79,13 +57,14 @@ button {
 
 .desk-confirmation-container button {
     font-size: 20px;
-    height: 44px;
+    height: 70px;
     background-color: #E9E9E9;
     margin: 5px 5px 5px 5px;
 }
 
 .desk-confirmation-container p {
     text-align: center;
+    margin: 20px 0px;
 }
 
 .desk-confirmation-container mat-icon {
@@ -129,7 +108,6 @@ button {
     justify-content: space-around;
     align-items: center;
     width: 374px;
-    height: 70px;
     margin-bottom: 3px;
     background-color: rgba(0, 0, 0, .05);
     border: none;
@@ -138,14 +116,75 @@ button {
 }
 
 .button-select:hover {
-    background-color: rgba(0, 0, 0, .15);
+    background-color: rgba(0, 0, 0, .15) !important;
     cursor: pointer;
 }
 
-.button-select:first-child {
+.button-select:first-of-type {
     border-radius: 6px 6px 0 0;
 }
 
-.button-select:last-child {
+.button-select:last-of-type {
     border-radius: 0 0 6px 6px;
+}
+
+.button-select-start {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 374px;
+    height: 44px !important;
+    margin-bottom: 3px;
+    background-color: rgba(0, 255, 17, 0.2) !important;
+    font-family: 'Roboto';
+}
+
+.button-select-start:hover {
+    background-color: rgba(0, 255, 17, 0.4) !important;
+    cursor: pointer;
+}
+
+.button-select-cancel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 374px;
+    height: 44px !important;
+    margin-bottom: 3px;
+    background-color: rgba(0, 0, 0, .05);
+    font-family: 'Roboto';
+}
+
+.button-select-cancel:hover {
+    background-color: rgba(0, 0, 0, .15) !important;
+    cursor: pointer;
+}
+
+.button-container {
+    margin-top: 30px;
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+span {
+    text-align: left;
+    padding-left: 16px;
+    margin-bottom: 0%;
+    font-family: 'Roboto';
+}
+
+span:first-of-type {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    padding-bottom: 3px;
+}
+
+span:last-of-type {
+    font-size: 14px;
+    color: #00000099;
 }
