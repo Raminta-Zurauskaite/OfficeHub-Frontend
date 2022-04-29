@@ -3,26 +3,24 @@
     <div class="content-layout">
         <ng-container *ngIf="bookings$ | async as bookings">
             <ng-container *ngIf="bookings.length; else noBookings">
-                <ng-container *ngIf="!isDisabled; else selectBooking">
-                    <div class="calendar">
-                        <div class="calendar-card-container">
-                            <mat-card class="calendar-card">
-                                <mat-calendar #calendar [minDate]="selectedDate" [maxDate]="selectedDate"
-                                    [(selected)]="selectedDate">
-                                </mat-calendar>
-                            </mat-card>
-                        </div>
+                <div class="calendar">
+                    <div class="calendar-card-container">
+                        <mat-card class="calendar-card">
+                            <mat-calendar #calendar [minDate]="selectedDate" [maxDate]="selectedDate"
+                                [(selected)]="selectedDate">
+                            </mat-calendar>
+                        </mat-card>
                     </div>
-                    <div class="tables-container">
-                        <div class="tables-image">
-                            <img src="assets/images/floor_plan.png" alt="Floor layout">
-                            <svg id="tables-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 1060">
-                                <path *ngFor="let desk of allDesks$ | async" id="{{desk.desk_id}}"
-                                    [attr.d]=desk.desk_coordinates />
-                            </svg>
-                        </div>
+                </div>
+                <div class="tables-container">
+                    <div class="tables-image">
+                        <img src="assets/images/floor_plan.png" alt="Floor layout">
+                        <svg id="tables-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 1060">
+                            <path *ngFor="let desk of allDesks$ | async" id="{{desk.desk_id}}"
+                                [attr.d]=desk.desk_coordinates />
+                        </svg>
                     </div>
-                </ng-container>
+                </div>
             </ng-container>
 
             <ng-container *ngIf="bookings.length">
@@ -61,10 +59,5 @@
                 Start new booking
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </button>
-        </div>
-    </ng-template>
-    <ng-template #selectBooking>
-        <div class="select-booking">
-            <p>Select booking to see details</p>
         </div>
     </ng-template>
