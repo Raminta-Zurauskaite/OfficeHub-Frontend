@@ -26,7 +26,7 @@ export class BookingsComponent implements OnInit {
     this.bookings$ = this.dataService.loadBookings(
       localStorage.getItem('user')!
     );
-    this.allDesks$ = this.dataService.loadFloorDesks('1').pipe(tap(console.log));
+    this.allDesks$ = this.dataService.loadFloorDesks('1');
   }
 
   ngOnInit(): void {
