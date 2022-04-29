@@ -25,6 +25,7 @@ export class CityListComponent implements OnInit {
   }
 
   onBackButtonClick() {
+    localStorage.removeItem('cityName');
     localStorage.removeItem('city');
     this.router.navigate(['/bookings']);
   }

@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
-import {Observable, of, filter, finalize} from 'rxjs';
+import { Observable, of, finalize, tap } from 'rxjs';
 import { BookingsInterface } from 'src/assets/data/Bookings';
+import { CoordinatesInterface } from 'src/assets/data/Coordinates';
+import { DeskInterface } from 'src/assets/data/Desks';
 import { DataService } from '../service/data/data.service';
 
 @Component({
@@ -13,34 +15,61 @@ import { DataService } from '../service/data/data.service';
 export class BookingsComponent implements OnInit {
   @ViewChild('calendar', { static: false })
   calendar!: MatCalendar<Date>;
+  allDesks$: Observable<DeskInterface[]> = of();
+  bookings$: Observable<BookingsInterface[]> = of();
+
+  bookedDesk: Number = 0;
+
   selectedDate = new Date();
   isDisabled: boolean = true;
-
-  bookings$: Observable<BookingsInterface[]> = of();
   selectedBookingId!: number;
 
-  constructor(private dataService: DataService, private router: Router) {}
-
-  ngOnInit(): void {
+  constructor(private dataService: DataService, private router: Router) {
+    this.allDesks$ = this.dataService.loadFloorDesks('1');
     this.bookings$ = this.dataService.loadBookings(
       localStorage.getItem('user')!
     );
+  }
+
+  ngOnInit(): void {
   }
 
   onClickStartBooking() {
     this.router.navigate(['/city']);
   }
 
-  onSelectedBookingClick(bookingDate: string, bookingId: number) {
+  tableMemory = 0;
+  onSelectedBookingClick(
+    bookingDate: string,
+    bookingId: number,
+    tableNumber: number
+  ) {
+
     this.isDisabled = false;
     this.selectedDate = new Date(bookingDate);
-    this.calendar._goToDateInView(this.selectedDate, 'month');
+    //this.calendar.activeDate = this.selectedDate;
+    this.calendar.updateTodaysDate();
+    // this.calendar._goToDateInView(this.selectedDate, 'month');
     this.selectedBookingId = bookingId;
+    var selected = document.getElementById(`${tableNumber}`);
+
+    if (this.tableMemory != tableNumber) {
+      selected?.classList.add('on');
+      document.getElementById(`${this.tableMemory}`)?.classList.remove('on');
+      this.tableMemory = tableNumber;
+    }
   }
 
   onCancelBookingClick() {
-    this.dataService.cancelBooking(this.selectedBookingId.toString()).pipe(finalize(() =>
-      {this.bookings$ = this.dataService.loadBookings(localStorage.getItem('user')!)})).subscribe();
+    this.dataService
+      .cancelBooking(this.selectedBookingId.toString())
+      .pipe(
+        finalize(() => {
+          this.bookings$ = this.dataService.loadBookings(
+            localStorage.getItem('user')!
+          );
+        })
+      )
+      .subscribe();
   }
-
 }

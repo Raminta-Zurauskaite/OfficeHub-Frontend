@@ -1,32 +1,207 @@
-.fullScreenNavContainer{
-    height: 1080px;
-    background-color: #e7e5e5e6;
-}
-
-.sideNavigationBar{
-    width: 300px;
-    padding: 10px 10px 10px 10px;
-    
-}
-
-.booking-info-container {
+.page-layout {
     display: flex;
+    flex-direction: column;
 }
 
-.booking-info-child {
-    flex: 1;
+.content-layout {
+    display: flex;
+    justify-content: space-between;
+    // flex: 1;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 60px 75px;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 60px 75px;
 }
 
 .calendar-card {
     width: 250px;
+    margin-top: 10em;
 }
 
-button{
+button {
     width: 220px;
 }
 
-.buttonAligment{
+.noBookings,
+.select-booking {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.noBookings p,
+.select-booking p {
+    font: 24px 'Segoe UI';
+}
+
+.no-bookings-button {
+    width: 318px;
+    height: 44px;
+    font: 20px 'Roboto';
+    font-weight: 500;
+    background-color: rgba(0, 255, 17, 0.2);
+}
+
+.no-bookings-button mat-icon {
+    float: right;
+    font-size: 26px;
+}
+
+
+.desk-confirmation-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.desk-confirmation-container {
+    background-color: white;
+    font: 24px 'Segoe UI';
+    border-radius: 6px;
+    width: 385px;
+    margin: 0 30px 30px 0;
+    padding: 10px 10px 10px 10px;
+}
+
+.desk-confirmation-container button {
+    font-size: 20px;
+    height: 70px;
+    background-color: #E9E9E9;
+    margin: 5px 5px 5px 5px;
+}
+
+.desk-confirmation-container p {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.desk-confirmation-container mat-icon {
+    float: right;
+    font-size: 26px;
+    padding-top: 6px;
+}
+
+.tables-image {
+    position: relative;
+    display: inline-block;
+}
+
+.tables-container img {
+    display: block;
+}
+
+.tables-container svg {
+    position: absolute;
+    top: -21px;
+    left: 0;
+    z-index: 2;
+    mix-blend-mode: overlay;
+    fill: #606060;
+}
+
+.button-select {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 355px;
+    margin-bottom: 3px;
+    background-color: rgba(0, 0, 0, .05);
+    border: none;
+    padding: 0 14px 0 16px;
+    font-family: 'Roboto';
+}
+
+.button-select:hover {
+    background-color: rgba(0, 0, 0, .15) !important;
+    cursor: pointer;
+}
+
+.button-select:first-of-type {
+    border-radius: 6px 6px 0 0;
+}
+
+.button-select:last-of-type {
+    border-radius: 0 0 6px 6px;
+}
+
+.on {
+    fill: #00FF11;
+}
+
+.button-select-start {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 370px;
+    height: 44px !important;
+    margin-bottom: 3px;
+    background-color: rgba(0, 255, 17, 0.2) !important;
+    font-family: 'Roboto';
+}
+
+.button-select-start:hover {
+    background-color: rgba(0, 255, 17, 0.4) !important;
+    cursor: pointer;
+}
+
+.button-select-cancel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 370px;
+    height: 44px !important;
+    margin-bottom: 3px;
+    background-color: rgba(0, 0, 0, .05);
+    font-family: 'Roboto';
+}
+
+.button-select-cancel:hover {
+    background-color: rgba(0, 0, 0, .15) !important;
+    cursor: pointer;
+}
+
+.button-container {
+    margin-top: 30px;
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+span {
+    text-align: left;
+    padding-left: 16px;
+    margin-bottom: 0%;
+    font-family: 'Roboto';
+}
+
+span:first-of-type {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    padding-bottom: 3px;
+}
+
+span:last-of-type {
+    font-size: 14px;
+    color: #00000099;
+}
+
+.booking-list {
+    overflow: auto;
+    height: 600px;
 }

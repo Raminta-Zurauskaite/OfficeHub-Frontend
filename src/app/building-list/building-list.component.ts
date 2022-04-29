@@ -29,7 +29,7 @@ export class BuildingListComponent implements OnInit {
   }
 
   onBackButtonClick() {
-    localStorage.removeItem('building');
+    localStorage.removeItem('cityName');
     localStorage.removeItem('city');
     this.router.navigate(['/city']);
   }
