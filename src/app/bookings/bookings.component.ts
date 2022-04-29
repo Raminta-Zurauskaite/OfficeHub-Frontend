@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
-import { Observable, of, finalize } from 'rxjs';
+import { Observable, of, finalize, tap } from 'rxjs';
 import { BookingsInterface } from 'src/assets/data/Bookings';
 import { CoordinatesInterface } from 'src/assets/data/Coordinates';
 import { DeskInterface } from 'src/assets/data/Desks';
@@ -27,6 +27,7 @@ export class BookingsComponent implements OnInit {
     this.bookings$ = this.dataService.loadBookings(
       localStorage.getItem('user')!
     );
+    this.allDesks$ = this.dataService.loadFloorDesks('1');
   }
 
   ngOnInit(): void { }
