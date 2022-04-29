@@ -11,9 +11,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(this.userID);
-  }
+  ngOnInit(): void {}
 
   isLoggedIn() {
     const loggedInUser = localStorage.getItem('user');
@@ -30,10 +28,13 @@ export class HeaderComponent implements OnInit {
   }
 
   onUserButtonClick() {
+    localStorage.removeItem('floorName');
     localStorage.removeItem('floor');
     localStorage.removeItem('deskId');
     localStorage.removeItem('booking_date');
+    localStorage.removeItem('cityName');
     localStorage.removeItem('city');
+    localStorage.removeItem('buildingName');
     localStorage.removeItem('building');
     this.router.navigate(['/bookings']);
   }

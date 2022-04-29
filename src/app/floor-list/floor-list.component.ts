@@ -30,7 +30,7 @@ export class FloorListComponent implements OnInit {
   }
 
   onBackButtonClick() {
-    localStorage.removeItem('floor');
+    localStorage.removeItem('buildingName');
     localStorage.removeItem('building');
     this.router.navigate(['/building']);
   }

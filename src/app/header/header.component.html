@@ -4,7 +4,7 @@
         <div class="headerButtonAligment">
             <ng-container *ngIf="isLoggedIn()">
             <button mat-flat-button  (click)="onBackButtonClick()" >Log out</button>
-            <div  [routerLink]="'/bookings'">
+            <div (click)="onUserButtonClick()">
                 <ng-container *ngIf="userID==2">
                     <img class="roundedImage" src="assets/images/John.png" alt="User_icon">
                 </ng-container>
@@ -14,7 +14,6 @@
                 <ng-container *ngIf="userID==3">
                     <img class="roundedImage" src="assets/images/Keanu.png" alt="User_icon">
                 </ng-container>
-                <!-- <img class="roundedImage" src="assets/images/User_icon.jpg" alt="User avatar icon picture" > -->
             </div>
             </ng-container>
         </div>
