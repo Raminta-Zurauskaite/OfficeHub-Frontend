@@ -1,4 +1,4 @@
-.page-layout{
+.page-layout {
     display: flex;
     flex-direction: column;
 }
@@ -32,7 +32,8 @@ button {
     width: 220px;
 }
 
-.noBookings, .select-booking{
+.noBookings,
+.select-booking {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,16 +41,17 @@ button {
     flex: 1;
 }
 
-.noBookings p, .select-booking p{
+.noBookings p,
+.select-booking p {
     font: 24px 'Segoe UI';
 }
 
-.no-bookings-button{
+.no-bookings-button {
     width: 318px;
     height: 44px;
     font: 20px 'Roboto';
     font-weight: 500;
-    background-color:rgba(0, 255, 17, 0.2);
+    background-color: rgba(0, 255, 17, 0.2);
 }
 
 .no-bookings-button mat-icon {
@@ -113,7 +115,7 @@ button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 374px;
+    width: 355px;
     margin-bottom: 3px;
     background-color: rgba(0, 0, 0, .05);
     border: none;
@@ -142,7 +144,7 @@ button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 374px;
+    width: 370px;
     height: 44px !important;
     margin-bottom: 3px;
     background-color: rgba(0, 255, 17, 0.2) !important;
@@ -158,7 +160,7 @@ button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 374px;
+    width: 370px;
     height: 44px !important;
     margin-bottom: 3px;
     background-color: rgba(0, 0, 0, .05);
@@ -197,4 +199,9 @@ span:first-of-type {
 span:last-of-type {
     font-size: 14px;
     color: #00000099;
+}
+
+.booking-list {
+    overflow: auto;
+    height: 600px;
 }
