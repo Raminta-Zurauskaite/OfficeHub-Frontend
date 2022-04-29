@@ -44,7 +44,6 @@ export class BookingsComponent implements OnInit {
     this.isDisabled = false;
     this.selectedDate = new Date(bookingDate);
     this.calendar.activeDate = this.selectedDate;
-    this.calendar.focusActiveCell;
     // this.calendar.updateTodaysDate();
     // this.calendar._goToDateInView(this.selectedDate, 'month');
     this.selectedBookingId = bookingId;

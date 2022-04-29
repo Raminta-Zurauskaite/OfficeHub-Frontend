@@ -1,6 +1,12 @@
-.page-layout {
+.page-layout{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-layout {
     display: flex;
     justify-content: space-between;
+    // flex: 1;
 }
 
 .calendar {
@@ -26,15 +32,15 @@ button {
     width: 220px;
 }
 
-.noBookings{
+.noBookings, .select-booking{
     display: flex;
-    flex: 1;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 1;
 }
 
-.noBookings p{
+.noBookings p, .select-booking p{
     font: 24px 'Segoe UI';
 }
 

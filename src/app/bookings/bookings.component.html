@@ -1,8 +1,9 @@
-<app-header></app-header>
 <div class="page-layout">
-    
+<app-header></app-header>
+<div class="content-layout">
     <ng-container *ngIf="bookings$ | async as bookings">
         <ng-container *ngIf="bookings.length; else noBookings">
+            <ng-container *ngIf="!isDisabled; else selectBooking">
             <div class="calendar">
                 <div class="calendar-card-container">
                     <mat-card class="calendar-card">
@@ -11,7 +12,6 @@
                         </mat-calendar>
                     </mat-card>
                 </div>
-
             </div>
             <div class="tables-container">
                 <div class="tables-image">
@@ -22,6 +22,7 @@
                 </div>
             </div>
         </ng-container>
+    </ng-container>
 
         <ng-container *ngIf="bookings.length">
             <div class="desk-confirmation-column">
@@ -46,13 +47,19 @@
         </ng-container>
     </ng-container>
 </div>
+</div>
 
 <ng-template #noBookings>
     <div class="noBookings">
-    <p>You have no bookings</p>
+        <p>You have no bookings</p>
         <button class="no-bookings-button" mat-flat-button (click)="onClickStartBooking()">
             Start new booking
             <mat-icon>keyboard_arrow_right</mat-icon>
         </button>
+    </div>
+</ng-template>
+<ng-template #selectBooking>
+    <div class="select-booking">
+        <p>Select booking to see details</p>
     </div>
 </ng-template>
