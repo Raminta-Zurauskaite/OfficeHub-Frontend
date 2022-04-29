@@ -18,6 +18,8 @@ export class FloorPlanComponent implements OnInit {
 
   bookedDeskNumber: Number = 0;
 
+  minDate = new Date();
+
   selectedDate = new Date();
   location!: Array<string>;
 
@@ -25,7 +27,7 @@ export class FloorPlanComponent implements OnInit {
   building = localStorage.getItem('buildingName');
   city = localStorage.getItem('cityName');
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.allDesks$ = this.dataService.loadFloorDesks(
@@ -33,7 +35,7 @@ export class FloorPlanComponent implements OnInit {
     );
     var localDate = new Date(
       this.selectedDate.getTime() -
-        this.selectedDate.getTimezoneOffset() * 60000
+      this.selectedDate.getTimezoneOffset() * 60000
     );
     this.minDate = new Date(localDate);
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
@@ -41,7 +43,7 @@ export class FloorPlanComponent implements OnInit {
   }
 
   onSubmit() {
-    if(!this.bookedDesks.includes(this.tableMemory)){
+    if (!this.bookedDesks.includes(this.tableMemory)) {
       this.dataService
         .createBooking(
           localStorage.getItem('user')!,
@@ -70,15 +72,17 @@ export class FloorPlanComponent implements OnInit {
   }
 
   loadBookedDesks() {
-      for (let i = 0; i < this.bookedDesks.length; i++) {
-        document.getElementById(`${this.bookedDesks[i]}`)?.classList.remove('booked');
+    for (let i = 0; i < this.bookedDesks.length; i++) {
+      document.getElementById(`${this.bookedDesks[i]}`)?.classList.remove('booked');
     }
     var localDate = new Date(this.selectedDate.getTime() - this.selectedDate.getTimezoneOffset() * 60000);
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));
-    this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10)).subscribe(res => {this.bookedDesks = res;
+    this.dataService.loadBookedFloorDesks(localStorage.getItem('floor')!, localDate.toISOString().slice(0, 10)).subscribe(res => {
+      this.bookedDesks = res;
       for (let i = 0; i < this.bookedDesks.length; i++) {
         document.getElementById(`${this.bookedDesks[i]}`)?.classList.add('booked');
-      }});
+      }
+    });
   }
 
   tableMemory = 0;
@@ -96,7 +100,7 @@ export class FloorPlanComponent implements OnInit {
   onDateChange() {
     var localDate = new Date(
       this.selectedDate.getTime() -
-        this.selectedDate.getTimezoneOffset() * 60000
+      this.selectedDate.getTimezoneOffset() * 60000
     );
 
     localStorage.setItem('booking_date', localDate.toISOString().slice(0, 10));

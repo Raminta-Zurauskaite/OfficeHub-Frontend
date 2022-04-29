@@ -18,6 +18,8 @@ export class BookingsComponent implements OnInit {
   allDesks$: Observable<DeskInterface[]> = of();
   bookings$: Observable<BookingsInterface[]> = of();
 
+  bookedDesk: Number = 0;
+
   selectedDate = new Date();
   isDisabled: boolean = true;
   selectedBookingId!: number;
@@ -27,10 +29,10 @@ export class BookingsComponent implements OnInit {
     this.bookings$ = this.dataService.loadBookings(
       localStorage.getItem('user')!
     );
-    this.allDesks$ = this.dataService.loadFloorDesks('1');
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   onClickStartBooking() {
     this.router.navigate(['/city']);
@@ -42,10 +44,11 @@ export class BookingsComponent implements OnInit {
     bookingId: number,
     tableNumber: number
   ) {
+
     this.isDisabled = false;
     this.selectedDate = new Date(bookingDate);
     //this.calendar.activeDate = this.selectedDate;
-    // this.calendar.updateTodaysDate();
+    this.calendar.updateTodaysDate();
     // this.calendar._goToDateInView(this.selectedDate, 'month');
     this.selectedBookingId = bookingId;
     var selected = document.getElementById(`${tableNumber}`);
